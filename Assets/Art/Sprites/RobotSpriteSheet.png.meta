@@ -251,7 +251,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 32
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -757,8 +757,8 @@ TextureImporter:
         y: 565
         width: 51
         height: 58
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -778,8 +778,8 @@ TextureImporter:
         y: 565
         width: 74
         height: 58
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -799,8 +799,8 @@ TextureImporter:
         y: 565
         width: 76
         height: 58
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -820,8 +820,8 @@ TextureImporter:
         y: 565
         width: 74
         height: 58
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -841,8 +841,8 @@ TextureImporter:
         y: 565
         width: 51
         height: 58
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -865,9 +865,45 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 17.5, y: -31.5}
+        - {x: 17.5, y: -26.5}
+        - {x: 14.5, y: -21.5}
+        - {x: 14.5, y: -18.5}
+        - {x: 10.5, y: -12.5}
+        - {x: 11.5, y: -13.5}
+        - {x: 16.5, y: -13.5}
+        - {x: 18.5, y: -11.5}
+        - {x: 22.5, y: -10.5}
+        - {x: 25.5, y: -8.5}
+        - {x: 25.5, y: 8.5}
+        - {x: 24.5, y: 9.5}
+        - {x: 20.5, y: 10.5}
+        - {x: 17.5, y: 12.5}
+        - {x: 17.5, y: 16.5}
+        - {x: 15.5, y: 21.5}
+        - {x: 11.5, y: 24.5}
+        - {x: 0.5, y: 24.5}
+        - {x: -1.5, y: 26.5}
+        - {x: -2.5, y: 26.5}
+        - {x: -7.5, y: 32.5}
+        - {x: -25.5, y: 32.5}
+        - {x: -25.5, y: 25.5}
+        - {x: -18.5, y: 18.5}
+        - {x: -18.5, y: 13.5}
+        - {x: -13.5, y: 7.5}
+        - {x: -11.5, y: 4.5}
+        - {x: -12.5, y: 3.5}
+        - {x: -13.5, y: -9.5}
+        - {x: -15.5, y: -11.5}
+        - {x: -15.5, y: -15.5}
+        - {x: -14.5, y: -16.5}
+        - {x: -17.5, y: -20.5}
+        - {x: -17.5, y: -23.5}
+        - {x: -7.5, y: -32.5}
+        - {x: 16.5, y: -32.5}
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: 1
       bones: []
       spriteID: ea628ff4b116a9e70800000000000000
       internalID: 9122710765126035118
