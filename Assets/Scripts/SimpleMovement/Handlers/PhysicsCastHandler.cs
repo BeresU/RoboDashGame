@@ -24,7 +24,7 @@ public class PhysicsCastHandler
 
     public CastType CastType
     {
-        get { return _castType; }
+        get => _castType;
         set
         {
             _castType = value;

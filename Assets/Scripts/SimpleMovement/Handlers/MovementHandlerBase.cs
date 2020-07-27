@@ -6,28 +6,28 @@ using UnityEngine;
 [Serializable]
 public abstract class MovementHandlerBase : IDisposable
 {
-    [SerializeField] protected MovementModule _movementModule;
+    [SerializeField] protected RigidBodyMovementModule rigidBodyMovementModule;
 
     public event Action<Vector3, float> OnMove;
     public event Action<Vector3> OnRotate;
 
     public float MaxSpeed
     {
-        get { return _movementModule.MaxSpeed; }
-        set { _movementModule.MaxSpeed = value; }
+        get => rigidBodyMovementModule.MaxSpeed;
+        set => rigidBodyMovementModule.MaxSpeed = value;
     }
 
     public float JumpForce
     {
-        get { return _movementModule.JumpForce; }
-        set { _movementModule.JumpForce = value; }
+        get => rigidBodyMovementModule.JumpForce;
+        set => rigidBodyMovementModule.JumpForce = value;
     }
 
     public MonoBehaviour MonoHelper { get; set; }
 
     public virtual void Init()
     {
-        _movementModule.Init();
+        rigidBodyMovementModule.Init();
     }
     public abstract void OnUpdate();
     public abstract void OnFixedUpdate();

@@ -4,12 +4,8 @@ using UnityEngine;
 [Serializable]
 public class InputMovementHandler : MovementHandlerBase
 {
-    public event Action OnJump;
-    public event Action<bool> OnGroundStateChange;
     [SerializeField] protected PhysicsCastHandler _castHandler;
-    [SerializeField] private int _maxTapsForJump = 2;
     [SerializeField] private bool _rotate;
-    [Range(0, 100)] [SerializeField] private float _deadZoneForMoving = 30;
 
     private bool _onGround = false;
     private bool _fingerDown = false;
@@ -21,17 +17,20 @@ public class InputMovementHandler : MovementHandlerBase
     private Vector3 _lastDirection = Vector3.zero;
 
     private const float MinSpeedForInit = 0.001f;
+    
+    public event Action OnJump;
+    public event Action<bool> OnGroundStateChange;
 
     public bool LockJump
     {
-        get { return _jumpLocked; }
-        set { _jumpLocked = value; }
+        get => _jumpLocked;
+        set => _jumpLocked = value;
     }
 
     public bool LockMovement
     {
-        get { return _movementLocked; }
-        set { _movementLocked = value; }
+        get => _movementLocked;
+        set => _movementLocked = value;
     }
 
 
@@ -67,13 +66,13 @@ public class InputMovementHandler : MovementHandlerBase
 
     public override void OnFixedUpdate()
     {
-        _movementModule.ApplyGravity();
-        _movementModule.Move(_lastDirection);
+        rigidBodyMovementModule.ApplyGravity();
+        rigidBodyMovementModule.Move(_lastDirection);
 
         if (!_isMoving)
         {
-            ActivateOnMoveEvent(_lastDirection, _movementModule.Speed);
-            _movementModule.Deaccelerate();
+            ActivateOnMoveEvent(_lastDirection, rigidBodyMovementModule.Speed);
+            rigidBodyMovementModule.Deaccelerate();
             OnDeaccelerate();
         }
 
@@ -82,17 +81,16 @@ public class InputMovementHandler : MovementHandlerBase
         HandleMovementVieKeyboard();
 #endif
     }
-
-
+    
     private void OnDeaccelerate()
     {
-        if (_movementModule.Speed < MinSpeedForInit)
+        if (rigidBodyMovementModule.Speed < MinSpeedForInit)
         {
-            InitRotate();
+            ResetRotate();
         }
     }
 
-    private void InitRotate()
+    private void ResetRotate()
     {
         if (!_initRotate)
         {
@@ -137,7 +135,7 @@ public class InputMovementHandler : MovementHandlerBase
         if (LockJump) return;
         if (!_onGround) return;
         OnJump?.Invoke();
-        _movementModule.Jump();
+        rigidBodyMovementModule.Jump();
     }
 
     private void OnMoveInput(Vector3 direction)
@@ -155,13 +153,13 @@ public class InputMovementHandler : MovementHandlerBase
         ActivateOnRoateEvent(direction);
 
         if (!_rotate) return;
-        _movementModule.Rotate(direction);
+        rigidBodyMovementModule.Rotate(direction);
     }
 
     private void Move(Vector3 direction)
     {
         _lastDirection = direction;
-        ActivateOnMoveEvent(direction, _movementModule.CurrentSpeed);
-        _movementModule.Accelerate();
+        ActivateOnMoveEvent(direction, rigidBodyMovementModule.CurrentSpeed);
+        rigidBodyMovementModule.Accelerate();
     }
 }

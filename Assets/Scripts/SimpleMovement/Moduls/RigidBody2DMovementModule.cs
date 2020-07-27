@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-// TODO: make this non monobehaviour.
 [System.Serializable]
-public class MovementModule
+public class RigidBody2DMovementModule 
 {
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _graviryMultiplier = 2.5f;
@@ -13,14 +10,14 @@ public class MovementModule
     [SerializeField] private float _timeZeroToMax = 0.2f;
     [SerializeField] private float _timeMaxToZero = 1f;
 
-    [SerializeField] private Rigidbody _rigidBody;
+    [SerializeField] private Rigidbody2D _rigidBody;
 
     private float _speed;
 
     private float _accelRatePerSecond;
     private float _deacelRatePerSecond;
 
-    public Transform ControlledTransform { get { return _rigidBody.transform; } }
+    public Transform ControlledTransform => _rigidBody.transform;
 
     public float Speed => _speed;
 
@@ -28,48 +25,48 @@ public class MovementModule
 
     public float JumpForce
     {
-        get { return _jumpForce; }
-        set { _jumpForce = value; }
+        get => _jumpForce;
+        set => _jumpForce = value;
     }
 
     public float MaxSpeed
     {
-        get { return _maxSpeed; }
-        set { _maxSpeed = value; }
+        get => _maxSpeed;
+        set => _maxSpeed = value;
     }
 
     public void Init()
     {
-        _rigidBody.velocity = Vector3.zero;
+        _rigidBody.velocity = Vector2.zero;
         _accelRatePerSecond = _maxSpeed / _timeZeroToMax;
         _deacelRatePerSecond = -_maxSpeed / _timeMaxToZero;
     }
 
-    public void Move(Vector3 direction)
+    public void Move(Vector2 direction)
     {
         _rigidBody.MovePosition(_rigidBody.position + direction * _speed * Time.fixedDeltaTime);
     }
 
-    public void MoveTo(Vector3 position)
+    public void MoveTo(Vector2 position)
     {
-        var target = Vector3.MoveTowards(_rigidBody.position, position, _speed * Time.deltaTime);
+        var target = Vector2.MoveTowards(_rigidBody.position, position, _speed * Time.deltaTime);
         Accelerate();
         _rigidBody.MovePosition(target);
     }
 
     public void Stop()
     {
-        _rigidBody.velocity = Vector3.zero;
+        _rigidBody.velocity = Vector2.zero;
         _speed = 0;
     }
 
     public void Jump()
     {
-        _rigidBody.AddForce(Vector3.up * 
-            Mathf.Sqrt(_jumpForce * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+        _rigidBody.AddForce(Vector2.up *
+                            Mathf.Sqrt(_jumpForce * -2f * Physics.gravity.y), ForceMode2D.Force);
     }
 
-    public void Rotate(Vector3 position)
+    public void Rotate(Vector2 position)
     {
         var targetRot = Quaternion.LookRotation(position);
         _rigidBody.MoveRotation(targetRot);
@@ -89,6 +86,6 @@ public class MovementModule
 
     public void ApplyGravity()
     {
-        _rigidBody.velocity += Vector3.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
+        _rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
     }
 }
