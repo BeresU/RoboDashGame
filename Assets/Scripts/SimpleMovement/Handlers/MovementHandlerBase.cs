@@ -1,50 +1,52 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using SimpleMovement.Modules;
 using UnityEngine;
 
-[Serializable]
-public abstract class MovementHandlerBase : IDisposable
+namespace SimpleMovement.Handlers
 {
-    [SerializeField] protected RigidBodyMovementModule rigidBodyMovementModule;
-
-    public event Action<Vector3, float> OnMove;
-    public event Action<Vector3> OnRotate;
-
-    public float MaxSpeed
+    [Serializable]
+    public abstract class MovementHandlerBase : IDisposable
     {
-        get => rigidBodyMovementModule.MaxSpeed;
-        set => rigidBodyMovementModule.MaxSpeed = value;
-    }
+        [SerializeField] protected RigidBodyMovementModule rigidBodyMovementModule;
 
-    public float JumpForce
-    {
-        get => rigidBodyMovementModule.JumpForce;
-        set => rigidBodyMovementModule.JumpForce = value;
-    }
+        public event Action<Vector3, float> OnMove;
+        public event Action<Vector3> OnRotate;
 
-    public MonoBehaviour MonoHelper { get; set; }
+        public float MaxSpeed
+        {
+            get => rigidBodyMovementModule.MaxSpeed;
+            set => rigidBodyMovementModule.MaxSpeed = value;
+        }
 
-    public virtual void Init()
-    {
-        rigidBodyMovementModule.Init();
-    }
-    public abstract void OnUpdate();
-    public abstract void OnFixedUpdate();
+        public float JumpForce
+        {
+            get => rigidBodyMovementModule.JumpForce;
+            set => rigidBodyMovementModule.JumpForce = value;
+        }
 
-    public virtual void Dispose()
-    {
-        OnRotate = null;
-        OnMove = null;
-    }
+        public MonoBehaviour MonoHelper { get; set; }
 
-    protected void ActivateOnMoveEvent(Vector3 direction, float speed)
-    {
-        OnMove?.Invoke(direction,speed);
-    }
+        public virtual void Init()
+        {
+            rigidBodyMovementModule.Init();
+        }
+        public abstract void OnUpdate();
+        public abstract void OnFixedUpdate();
 
-    protected void ActivateOnRoateEvent(Vector3 direction)
-    {
-        OnRotate?.Invoke(direction);
+        public virtual void Dispose()
+        {
+            OnRotate = null;
+            OnMove = null;
+        }
+
+        protected void ActivateOnMoveEvent(Vector3 direction, float speed)
+        {
+            OnMove?.Invoke(direction,speed);
+        }
+
+        protected void ActivateOnRoateEvent(Vector3 direction)
+        {
+            OnRotate?.Invoke(direction);
+        }
     }
 }
