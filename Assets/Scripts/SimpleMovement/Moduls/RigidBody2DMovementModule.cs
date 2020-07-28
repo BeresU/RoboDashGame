@@ -3,7 +3,7 @@
 namespace SimpleMovement.Modules
 {
     [System.Serializable]
-    public class RigidBody2DMovementModule : MovementModuleBase<Vector2>
+    public class RigidBody2DMovementModule : MovementModule2D
     {
         [SerializeField] private float _jumpForce = 5f;
         [SerializeField] private float _graviryMultiplier = 2.5f;

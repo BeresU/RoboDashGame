@@ -3,7 +3,7 @@
 namespace SimpleMovement.Modules
 {
     [System.Serializable]
-    public class RigidBodyMovementModule : MovementModuleBase<Vector3>
+    public class RigidBodyMovementModule : MovementModule3D
     {
         [SerializeField] private Rigidbody _rigidBody;
         
