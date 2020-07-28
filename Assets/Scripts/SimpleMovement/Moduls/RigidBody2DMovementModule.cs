@@ -3,7 +3,7 @@
 namespace SimpleMovement.Modules
 {
     [System.Serializable]
-    public class RigidBody2DMovementModule 
+    public class RigidBody2DMovementModule : MovementModuleBase<Vector2>
     {
         [SerializeField] private float _jumpForce = 5f;
         [SerializeField] private float _graviryMultiplier = 2.5f;
@@ -19,76 +19,70 @@ namespace SimpleMovement.Modules
         private float _accelRatePerSecond;
         private float _deacelRatePerSecond;
 
-        public Transform ControlledTransform => _rigidBody.transform;
+        public override Transform ControlledTransform => _rigidBody.transform;
 
-        public float Speed => _speed;
+        public override float Speed => _speed;
 
-        public float CurrentSpeed => _speed;
+        public override float CurrentSpeed => _speed;
 
-        public float JumpForce
+        public override float JumpForce
         {
             get => _jumpForce;
             set => _jumpForce = value;
         }
 
-        public float MaxSpeed
+        public override float MaxSpeed
         {
             get => _maxSpeed;
             set => _maxSpeed = value;
         }
 
-        public void Init()
+        public override void Init()
         {
             _rigidBody.velocity = Vector2.zero;
             _accelRatePerSecond = _maxSpeed / _timeZeroToMax;
             _deacelRatePerSecond = -_maxSpeed / _timeMaxToZero;
         }
-
-        public void Move(Vector2 direction)
-        {
+        
+        public override void Move(Vector2 direction) =>
             _rigidBody.MovePosition(_rigidBody.position + direction * _speed * Time.fixedDeltaTime);
-        }
 
-        public void MoveTo(Vector2 position)
+        public override void MoveTo(Vector2 position)
         {
             var target = Vector2.MoveTowards(_rigidBody.position, position, _speed * Time.deltaTime);
             Accelerate();
             _rigidBody.MovePosition(target);
         }
 
-        public void Stop()
+        public override void Stop()
         {
             _rigidBody.velocity = Vector2.zero;
             _speed = 0;
         }
 
-        public void Jump()
-        {
+        public override void Jump() =>
             _rigidBody.AddForce(Vector2.up *
                                 Mathf.Sqrt(_jumpForce * -2f * Physics.gravity.y), ForceMode2D.Force);
-        }
-
-        public void Rotate(Vector2 position)
+        
+        public override void Rotate(Vector2 position)
         {
             var targetRot = Quaternion.LookRotation(position);
             _rigidBody.MoveRotation(targetRot);
         }
 
-        public void Accelerate()
+        public override void Accelerate()
         {
             _speed += _accelRatePerSecond * Time.deltaTime;
             _speed = Mathf.Min(_speed, _maxSpeed);
         }
 
-        public void Deaccelerate()
+        public override void Deaccelerate()
         {
             _speed += _deacelRatePerSecond * Time.deltaTime;
             _speed = Mathf.Max(_speed, 0);
         }
 
-        public void ApplyGravity()
-        {
+        public override void ApplyGravity() => 
             _rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
-        }
     }
 }
