@@ -52,15 +52,9 @@ namespace SimpleMovement.Handlers
             }
         }
 
-        public void Reset()
-        {
-            _wasHit = false;
-        }
+        public void Reset() => _wasHit = false;
 
-        public void CastAll()
-        {
-            OnHits?.Invoke(_physicsCastAll());
-        }
+        public void CastAll() => OnHits?.Invoke(_physicsCastAll());
 
         public void Cast()
         {

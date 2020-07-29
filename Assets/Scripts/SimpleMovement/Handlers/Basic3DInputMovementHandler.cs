@@ -1,13 +1,15 @@
 ﻿using System;
+using SimpleMovement.Modules;
 using UnityEngine;
 
 namespace SimpleMovement.Handlers
 {
     [Serializable]
-    public class InputMovementHandler : MovementHandlerBase
+    public class Basic3DInputMovementHandler : MovementHandlerBase<Vector3>
     {
         [SerializeField] protected PhysicsCastHandler _castHandler;
         [SerializeField] private bool _rotate;
+        [SerializeField] private MovementModuleBase3D _movementModule;
 
         private bool _onGround = false;
         private bool _fingerDown = false;
@@ -17,12 +19,11 @@ namespace SimpleMovement.Handlers
         private bool _movementLocked;
 
         private Vector3 _lastDirection = Vector3.zero;
-
-        private const float MinSpeedForInit = 0.001f;
-    
+        
         public event Action OnJump;
         public event Action<bool> OnGroundStateChange;
 
+        private const float MinSpeedForInit = 0.001f;
         public bool LockJump
         {
             get => _jumpLocked;
@@ -34,11 +35,9 @@ namespace SimpleMovement.Handlers
             get => _movementLocked;
             set => _movementLocked = value;
         }
-
-
+        
         public override void Init()
         {
-            base.Init();
             _castHandler.Init();
             _castHandler.OnHit += OnRayCastHit;
             _castHandler.OnHitLost += OnHitLost;
@@ -55,7 +54,6 @@ namespace SimpleMovement.Handlers
 
         public override void OnUpdate()
         {
-            // TODO: assign all OnUpdates to main update loop?
             _castHandler.Cast();
 
 #if UNITY_EDITOR
@@ -68,13 +66,13 @@ namespace SimpleMovement.Handlers
 
         public override void OnFixedUpdate()
         {
-            rigidBodyMovementModule.ApplyGravity();
-            rigidBodyMovementModule.Move(_lastDirection);
+            _movementModule.ApplyGravity();
+            _movementModule.Move(_lastDirection);
 
             if (!_isMoving)
             {
-                ActivateOnMoveEvent(_lastDirection, rigidBodyMovementModule.Speed);
-                rigidBodyMovementModule.Deaccelerate();
+                ActivateOnMoveEvent(_lastDirection, _movementModule.Speed);
+                _movementModule.Deaccelerate();
                 OnDeaccelerate();
             }
 
@@ -86,7 +84,7 @@ namespace SimpleMovement.Handlers
     
         private void OnDeaccelerate()
         {
-            if (rigidBodyMovementModule.Speed < MinSpeedForInit)
+            if (_movementModule.Speed < MinSpeedForInit)
             {
                 ResetRotate();
             }
@@ -137,7 +135,7 @@ namespace SimpleMovement.Handlers
             if (LockJump) return;
             if (!_onGround) return;
             OnJump?.Invoke();
-            rigidBodyMovementModule.Jump();
+            _movementModule.Jump();
         }
 
         private void OnMoveInput(Vector3 direction)
@@ -152,17 +150,17 @@ namespace SimpleMovement.Handlers
         private void Rotate(Vector3 direction)
         {
             _initRotate = false;
-            ActivateOnRoateEvent(direction);
+            ActivateOnRotateEvent(direction);
 
             if (!_rotate) return;
-            rigidBodyMovementModule.Rotate(direction);
+            _movementModule.Rotate(direction);
         }
 
         private void Move(Vector3 direction)
         {
             _lastDirection = direction;
-            ActivateOnMoveEvent(direction, rigidBodyMovementModule.CurrentSpeed);
-            rigidBodyMovementModule.Accelerate();
+            ActivateOnMoveEvent(direction, _movementModule.CurrentSpeed);
+            _movementModule.Accelerate();
         }
     }
 }

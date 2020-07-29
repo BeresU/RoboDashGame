@@ -5,7 +5,7 @@ namespace RoboDash.Controllers
 {
     public class CharacterMovement : MonoBehaviour
     {
-        [SerializeField] private InputMovementHandler _movementHandler;
+        [SerializeField] private Basic3DInputMovementHandler _movementHandler;
         
         private void Awake()
         {
