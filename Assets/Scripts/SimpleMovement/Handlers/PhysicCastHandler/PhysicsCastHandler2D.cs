@@ -8,18 +8,19 @@ namespace SimpleMovement.Handlers.PhysicCastHandler
     {
         protected override bool RayCast()
         {
-            _hit = Physics2D.Raycast(_castParameters.Origin,
-                _castParameters.Direction, _castParameters.Length, _mask);
-            
-            return _hit;
+            return _hit = Physics2D.Raycast(_castParameters.Origin, _castParameters.Direction, _castParameters.Length,
+                _mask);
         }
 
         protected override RaycastHit2D[] RayCastAll() =>
             Physics2D.RaycastAll(_castParameters.Origin,
                 _castParameters.Direction, _castParameters.Length, _mask);
 
-        protected override bool SphereCast() => throw new NotImplementedException();
+        protected override bool SphereCast() =>
+            _hit = Physics2D.CircleCast(_castParameters.Origin, _castParameters.Radius, _castParameters.Direction);
 
-        protected override RaycastHit2D[] SphereCastAll() => throw new NotImplementedException();
+        protected override RaycastHit2D[] SphereCastAll() => Physics2D.CircleCastAll(_castParameters.Origin,
+            _castParameters.Radius,
+            _castParameters.Direction, _castParameters.Length, _mask);
     }
 }

@@ -14,7 +14,6 @@ namespace SimpleMovement.Handlers
         private bool _onGround = false;
         private bool _isMoving;
         private bool _initRotate = false;
-        private bool _jumpLocked;
         private bool _movementLocked;
 
         private Vector2 _lastDirection = Vector2.zero;
@@ -23,11 +22,7 @@ namespace SimpleMovement.Handlers
         public event Action<bool> OnGroundStateChange;
 
         private const float MinSpeedForInit = 0.001f;
-        public bool LockJump
-        {
-            get => _jumpLocked;
-            set => _jumpLocked = value;
-        }
+        public bool LockJump { get; set; }
 
         public bool LockMovement
         {

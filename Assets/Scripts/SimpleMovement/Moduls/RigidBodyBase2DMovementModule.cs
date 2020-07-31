@@ -56,12 +56,9 @@ namespace SimpleMovement.Modules
             _speed = 0;
         }
 
-        public override void Jump()
-        {
+        public override void Jump() =>
             _rigidBody.AddForce(Vector2.up *
                                 Mathf.Sqrt(_jumpForce * -2f * Physics2D.gravity.y), ForceMode2D.Impulse);
-            
-        }
 
         public override void Rotate(Vector2 position)
         {
@@ -80,9 +77,7 @@ namespace SimpleMovement.Modules
             _speed = Mathf.Max(_speed, 0);
         }
 
-        public override void ApplyGravity()
-        {
-            _rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
-        }
+        public override void ApplyGravity() 
+            => _rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
     }
 }

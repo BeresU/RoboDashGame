@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using SimpleMovement.Enums;
 using SimpleMovement.Utils;
 using UnityEngine;
@@ -25,9 +24,6 @@ namespace SimpleMovement.Handlers.PhysicCastHandler
 
         public CastParameters CastParameters => _castParameters;
         
-        public void Reset() => _wasHit = false;
-        public void CastAll() => OnHits?.Invoke(_physicsCastAll());
-        
         public virtual void Init()
         {
             _castParameters.Init();
@@ -44,6 +40,9 @@ namespace SimpleMovement.Handlers.PhysicCastHandler
                     break;
             }
         }
+        
+        public void Reset() => _wasHit = false;
+        public void CastAll() => OnHits?.Invoke(_physicsCastAll());
 
         public void Cast()
         {

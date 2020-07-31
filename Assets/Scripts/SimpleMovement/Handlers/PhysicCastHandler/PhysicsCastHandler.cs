@@ -24,10 +24,8 @@ namespace SimpleMovement.Handlers.PhysicCastHandler
                 _castParameters.Direction, out _hit, _castParameters.Length,_mask);
         }
 
-        protected override RaycastHit[] SphereCastAll()
-        {
-            return Physics.SphereCastAll(_castParameters.Origin, _castParameters.Radius,
+        protected override RaycastHit[] SphereCastAll() =>
+            Physics.SphereCastAll(_castParameters.Origin, _castParameters.Radius,
                 _castParameters.Direction, _castParameters.Length, _mask);
-        }
     }
 }
