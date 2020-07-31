@@ -12,7 +12,6 @@ namespace SimpleMovement.Handlers
         [SerializeField] private MovementModuleBase2D _movementModule;
 
         private bool _onGround = false;
-        private bool _fingerDown = false;
         private bool _isMoving;
         private bool _initRotate = false;
         private bool _jumpLocked;
@@ -121,7 +120,7 @@ namespace SimpleMovement.Handlers
             {
                 OnMoveInput(Vector2.left);
             }
-            else if (_isMoving && !_fingerDown)
+            else if (_isMoving)
             {
                 _isMoving = false;
             }
