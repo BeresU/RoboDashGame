@@ -1,4 +1,5 @@
 ﻿using System;
+using SimpleMovement.Handlers.PhysicCastHandler;
 using SimpleMovement.Modules;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace SimpleMovement.Handlers
 {
     public class Basic2DInputMovementHandler : MovementHandlerBase<Vector2>
     {
-        [SerializeField] protected PhysicsCastHandler _castHandler;
+        [SerializeField] protected PhysicsCastHandler2D _castHandler;
         [SerializeField] private bool _rotate;
         [SerializeField] private MovementModuleBase2D _movementModule;
 
@@ -74,8 +75,7 @@ namespace SimpleMovement.Handlers
                 _movementModule.Deaccelerate();
                 OnDeaccelerate();
             }
-
-
+            
 #if UNITY_EDITOR
             HandleMovementVieKeyboard();
 #endif
@@ -99,7 +99,7 @@ namespace SimpleMovement.Handlers
             _initRotate = true;
         }
 
-        private void OnRayCastHit(RaycastHit hit)
+        private void OnRayCastHit(RaycastHit2D hit)
         {
             _onGround = true;
             OnGroundStateChange?.Invoke(_onGround);

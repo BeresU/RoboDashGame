@@ -6,7 +6,6 @@ namespace SimpleMovement.Modules
     public class RigidBodyMovementModuleBase : MovementModuleBase3D
     {
         [SerializeField] private Rigidbody _rigidBody;
-        
         public override Transform ControlledTransform => _rigidBody.transform;
 
         public override float Speed => _speed;

@@ -6,7 +6,7 @@ namespace SimpleMovement.Modules
     public class RigidBodyBase2DMovementModule : MovementModuleBase2D
     {
         [SerializeField] private Rigidbody2D _rigidBody;
-            
+        
         public override Transform ControlledTransform => _rigidBody.transform;
 
         public override float Speed => _speed;
@@ -24,15 +24,20 @@ namespace SimpleMovement.Modules
             get => _maxSpeed;
             set => _maxSpeed = value;
         }
-
+        
+        [ContextMenu("Init")]
         public override void Init()
         {
+            _timeZeroToMax = Mathf.Max(_timeZeroToMax, float.Epsilon);
+            _timeMaxToZero = Mathf.Max(_timeMaxToZero, float.Epsilon);
+
             _rigidBody.velocity = Vector2.zero;
+            // TODO: to base class.
             _accelRatePerSecond = _maxSpeed / _timeZeroToMax;
             _deacelRatePerSecond = -_maxSpeed / _timeMaxToZero;
         }
         
-        public override void Move(Vector2 direction) =>
+        public override void Move(Vector2 direction) => 
             _rigidBody.MovePosition(_rigidBody.position + direction * _speed * Time.fixedDeltaTime);
 
         public override void MoveTo(Vector2 position)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SimpleMovement.Modules
 {
@@ -24,6 +25,8 @@ namespace SimpleMovement.Modules
         public abstract float JumpForce { get; set; }
 
         public abstract float MaxSpeed { get; set; }
+
+        private void Awake() => Init();
         
         public abstract void Init();
         

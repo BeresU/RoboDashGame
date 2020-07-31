@@ -11,10 +11,11 @@ namespace SimpleMovement.Utils
         [SerializeField] private float _length;
         [SerializeField] private float _radius;
 
-        // TODO: Editor script that hide refs when thoes bools enable
+        // TODO: Editor script that hide refs when these bools enable
         [SerializeField] private bool _customOrigin;       
         [SerializeField] private bool _customDirection;
 
+        // TODO: set enum that display direction set up and warning about default origin.
         private Vector3 _origin;
         private Vector3 _direction;
 
