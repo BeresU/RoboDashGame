@@ -129,6 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6070388977403309096}
   - component: {fileID: 5270823709487788994}
+  - component: {fileID: 7949660802743226346}
+  - component: {fileID: 2766604851394859975}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -172,6 +174,50 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7949660802743226346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153960630744804915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd6220c385f54140a9335408d367ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpForce: 5
+  _graviryMultiplier: 2.5
+  _maxSpeed: 10
+  _timeZeroToMax: 0.2
+  _timeMaxToZero: 1
+  _rigidBody: {fileID: 5270823709487788994}
+--- !u!114 &2766604851394859975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153960630744804915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251f90023679f7945903491679b43108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _castHandler:
+    _castType: 0
+    _castParameters:
+      _originRef: {fileID: 0}
+      _directionRef: {fileID: 0}
+      _length: 0
+      _radius: 0
+      _customOrigin: 0
+      _customDirection: 0
+    _mask:
+      serializedVersion: 2
+      m_Bits: 0
+  _rotate: 0
+  _movementModule: {fileID: 7949660802743226346}
 --- !u!1 &3282248199360425098
 GameObject:
   m_ObjectHideFlags: 0
