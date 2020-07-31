@@ -65,10 +65,9 @@ namespace SimpleMovement.Handlers
         }
 
         public override void OnFixedUpdate()
-        {
-            _movementModule.ApplyGravity();
+        {    
             _movementModule.Move(_lastDirection);
-            
+
             if (!_isMoving)
             {
                 ActivateOnMoveEvent(_lastDirection, _movementModule.Speed);

@@ -39,7 +39,8 @@ namespace SimpleMovement.Modules
 
         public override void Move(Vector2 direction)
         {
-            _rigidBody.velocity = Vector2.right * direction.x * _speed;
+            var dir = new Vector2(direction.x * _speed,_rigidBody.velocity.y );
+            _rigidBody.velocity = dir;
         }
 
         public override void MoveTo(Vector2 position)
@@ -55,14 +56,16 @@ namespace SimpleMovement.Modules
             _speed = 0;
         }
 
-        public override void Jump() =>
+        public override void Jump()
+        {
             _rigidBody.AddForce(Vector2.up *
                                 Mathf.Sqrt(_jumpForce * -2f * Physics2D.gravity.y), ForceMode2D.Impulse);
+            
+        }
 
         public override void Rotate(Vector2 position)
         {
-            var targetRot = Quaternion.LookRotation(position);
-            _rigidBody.MoveRotation(targetRot);
+
         }
 
         public override void Accelerate()
@@ -79,7 +82,7 @@ namespace SimpleMovement.Modules
 
         public override void ApplyGravity()
         {
-            //_rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
+            _rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
         }
     }
 }
