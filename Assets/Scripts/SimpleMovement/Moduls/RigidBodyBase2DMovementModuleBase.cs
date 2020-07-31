@@ -5,20 +5,8 @@ namespace SimpleMovement.Modules
     [System.Serializable]
     public class RigidBodyBase2DMovementModuleBase : MovementModuleBase2D
     {
-        [SerializeField] private float _jumpForce = 5f;
-        [SerializeField] private float _graviryMultiplier = 2.5f;
-        [SerializeField] private float _maxSpeed = 10f;
-
-        [SerializeField] private float _timeZeroToMax = 0.2f;
-        [SerializeField] private float _timeMaxToZero = 1f;
-
         [SerializeField] private Rigidbody2D _rigidBody;
-
-        private float _speed;
-
-        private float _accelRatePerSecond;
-        private float _deacelRatePerSecond;
-
+            
         public override Transform ControlledTransform => _rigidBody.transform;
 
         public override float Speed => _speed;
