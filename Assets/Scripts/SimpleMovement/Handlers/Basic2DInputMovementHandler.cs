@@ -68,7 +68,7 @@ namespace SimpleMovement.Handlers
         {
             _movementModule.ApplyGravity();
             _movementModule.Move(_lastDirection);
-
+            
             if (!_isMoving)
             {
                 ActivateOnMoveEvent(_lastDirection, _movementModule.Speed);

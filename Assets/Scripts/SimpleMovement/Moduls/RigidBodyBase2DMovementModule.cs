@@ -6,7 +6,7 @@ namespace SimpleMovement.Modules
     public class RigidBodyBase2DMovementModule : MovementModuleBase2D
     {
         [SerializeField] private Rigidbody2D _rigidBody;
-        
+
         public override Transform ControlledTransform => _rigidBody.transform;
 
         public override float Speed => _speed;
@@ -24,7 +24,7 @@ namespace SimpleMovement.Modules
             get => _maxSpeed;
             set => _maxSpeed = value;
         }
-        
+
         [ContextMenu("Init")]
         public override void Init()
         {
@@ -36,9 +36,11 @@ namespace SimpleMovement.Modules
             _accelRatePerSecond = _maxSpeed / _timeZeroToMax;
             _deacelRatePerSecond = -_maxSpeed / _timeMaxToZero;
         }
-        
-        public override void Move(Vector2 direction) => 
-            _rigidBody.MovePosition(_rigidBody.position + direction * _speed * Time.fixedDeltaTime);
+
+        public override void Move(Vector2 direction)
+        {
+            _rigidBody.velocity = Vector2.right * direction.x * _speed;
+        }
 
         public override void MoveTo(Vector2 position)
         {
@@ -55,8 +57,8 @@ namespace SimpleMovement.Modules
 
         public override void Jump() =>
             _rigidBody.AddForce(Vector2.up *
-                                Mathf.Sqrt(_jumpForce * -2f * Physics.gravity.y), ForceMode2D.Force);
-        
+                                Mathf.Sqrt(_jumpForce * -2f * Physics2D.gravity.y), ForceMode2D.Impulse);
+
         public override void Rotate(Vector2 position)
         {
             var targetRot = Quaternion.LookRotation(position);
@@ -75,7 +77,9 @@ namespace SimpleMovement.Modules
             _speed = Mathf.Max(_speed, 0);
         }
 
-        public override void ApplyGravity() => 
-            _rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
+        public override void ApplyGravity()
+        {
+            //_rigidBody.velocity += Vector2.up * Physics.gravity.y * (_graviryMultiplier - 1) * Time.deltaTime;
+        }
     }
 }
