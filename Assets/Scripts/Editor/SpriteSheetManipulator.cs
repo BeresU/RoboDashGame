@@ -5,7 +5,7 @@ namespace Editor
 {
     public class SpriteSheetManipulator 
     {
-        [MenuItem("Assets/Change sprite sheet pivot to bottom left" ,false,priority = -1)]
+        [MenuItem("Assets/SpriteActions/Change sprite sheet pivot to bottom left" ,false,priority = -1)]
         public static void ChangePivotToBottomLeft()
         {
             if(Selection.activeObject == null) return;
@@ -31,7 +31,7 @@ namespace Editor
             AssetDatabase.Refresh();
         }
         
-        [MenuItem("Assets/Change sprite sheet pivot to bottom left" ,true)]
+        [MenuItem("Assets/SpriteActions/Change sprite sheet pivot to bottom left" ,true)]
         private static bool Validate_ChangePivotToBottomLeft()
         {
             if(Selection.activeObject == null) return false;
