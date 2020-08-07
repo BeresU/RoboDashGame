@@ -5,20 +5,14 @@ namespace Editor
 {
     public class SpriteSheetManipulator 
     {
-        [MenuItem("Assets/Change sprite sheet pivot to bottom left", priority = -1)]
+        [MenuItem("Assets/Change sprite sheet pivot to bottom left" ,false,priority = -1)]
         public static void ChangePivotToBottomLeft()
         {
             if(Selection.activeObject == null) return;
 
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);
-            var textureImporter = (TextureImporter)AssetImporter.GetAtPath(path);
+            var textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
             
-            if (textureImporter == null)
-            {
-                Debug.Log($"Name: {Selection.activeObject.name} is not {nameof(TextureImporter)}");
-                return;
-            }
-
             var spriteSheet = new SpriteMetaData[textureImporter.spritesheet.Length];
 
             for (var i = 0; i < spriteSheet.Length; i++)
@@ -35,6 +29,17 @@ namespace Editor
             
             AssetDatabase.ImportAsset(textureImporter.assetPath, ImportAssetOptions.ForceUpdate);
             AssetDatabase.Refresh();
+        }
+        
+        [MenuItem("Assets/Change sprite sheet pivot to bottom left" ,true)]
+        private static bool Validate_ChangePivotToBottomLeft()
+        {
+            if(Selection.activeObject == null) return false;
+            
+            var path = AssetDatabase.GetAssetPath(Selection.activeObject);
+            var textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+            
+            return textureImporter != null;
         }
     }
 }
