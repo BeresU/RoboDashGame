@@ -53,7 +53,7 @@ namespace SimpleMovement.Handlers
             _castHandler.OnHitLost -= OnHitLost;
         }
 
-        public override void OnUpdate()
+        protected override void OnUpdate()
         {
             _castHandler.Cast();
 
@@ -65,7 +65,7 @@ namespace SimpleMovement.Handlers
 #endif
         }
 
-        public override void OnFixedUpdate()
+        protected override void OnFixedUpdate()
         {
             _movementModule.ApplyGravity();
             _movementModule.Move(_lastDirection);

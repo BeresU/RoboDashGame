@@ -13,8 +13,8 @@ namespace SimpleMovement.Handlers
         private void FixedUpdate() => OnFixedUpdate();
         private void Awake() => Init();
 
-        public abstract void OnUpdate();
-        public abstract void OnFixedUpdate();
+        protected abstract void OnUpdate();
+        protected abstract void OnFixedUpdate();
         public abstract void Init();
 
         public virtual void Dispose()
