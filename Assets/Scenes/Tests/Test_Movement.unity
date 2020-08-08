@@ -469,6 +469,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 3282248199360425101, guid: 8c0301c684b46154e95f78c6b3bc715f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6070388977403309096, guid: 8c0301c684b46154e95f78c6b3bc715f,
         type: 3}
       propertyPath: m_LocalPosition.x
