@@ -193,7 +193,8 @@ GameObject:
   - component: {fileID: 4716952562875707125}
   - component: {fileID: 5270823709487788994}
   - component: {fileID: 7949660802743226346}
-  - component: {fileID: 2766604851394859975}
+  - component: {fileID: 420384809733508175}
+  - component: {fileID: 8343436196355653484}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -228,6 +229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76688da103cb590468231d239ade514a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackHandler: {fileID: 8343436196355653484}
+  _damageHandler: {fileID: 0}
+  _movementHandler: {fileID: 420384809733508175}
 --- !u!50 &5270823709487788994
 Rigidbody2D:
   serializedVersion: 4
@@ -267,7 +271,7 @@ MonoBehaviour:
   _timeZeroToMax: 0.1
   _timeMaxToZero: 0.4
   _rigidBody: {fileID: 5270823709487788994}
---- !u!114 &2766604851394859975
+--- !u!114 &420384809733508175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +280,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2153960630744804915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251f90023679f7945903491679b43108, type: 3}
+  m_Script: {fileID: 11500000, guid: 2625f290ad6edde40b3c2bcea816cd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _castHandler:
@@ -293,6 +297,19 @@ MonoBehaviour:
       m_Bits: 4294967295
   _rotate: 0
   _movementModule: {fileID: 7949660802743226346}
+  _minAngleForJump: 30
+--- !u!114 &8343436196355653484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153960630744804915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e26758939928a4b9b33b7301eb0e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3282248199360425098
 GameObject:
   m_ObjectHideFlags: 0

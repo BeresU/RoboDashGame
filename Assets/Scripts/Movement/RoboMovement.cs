@@ -13,6 +13,8 @@ namespace Movement
         [SerializeField] private bool _rotate;
         [SerializeField] private MovementModuleBase2D _movementModule;
 
+        [SerializeField] private float _minAngleForJump = 30f;
+
         private bool _onGround = false;
         private bool _isMoving;    // TODO: someone need to set _isMoveing to true/false.
         private bool _movementLocked;
@@ -49,7 +51,15 @@ namespace Movement
         
         public void OnSwipe(Vector2 direction)
         {
+            var jump = ShouldJump(direction);
             
+        }
+
+        private bool ShouldJump(Vector2 direction)
+        {
+            if (direction.y < 0) return false;
+            var angle = Vector2.Angle(direction, Vector2.right);
+            return angle > _minAngleForJump;
         }
         
         protected override void OnUpdate()
