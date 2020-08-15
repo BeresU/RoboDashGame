@@ -1,11 +1,15 @@
-﻿using System;
-using Lean.Touch;
+﻿using Lean.Touch;
+using RoboDash.Controllers;
 using UnityEngine;
 
 namespace RoboDash.Managers
 {
     public class InputManager : MonoBehaviour
     {
+        // TODO: not set this vie inspector, get character from scene .
+        [SerializeField] private RoboCharacter _rightCharacter;
+        [SerializeField] private RoboCharacter _leftCharacter;
+        
         private void Awake()
         {
             LeanTouch.OnFingerSwipe += OnSwipe;
@@ -21,11 +25,21 @@ namespace RoboDash.Managers
         private void OnTap(LeanFinger leanFinger)
         {
             Debug.Log($"On Tap; {leanFinger.Tap}");
+            var character = GetCharacterAccordingGesture(leanFinger);
+            character.OnTap(leanFinger.ScreenPosition);
         }
 
         private void OnSwipe(LeanFinger leanFinger)
         {
-            Debug.Log($"On Swipe; {leanFinger.Swipe}");
+            var character = GetCharacterAccordingGesture(leanFinger);
+            var direction = (leanFinger.ScreenPosition - leanFinger.StartScreenPosition).normalized;
+            Debug.Log($"On Swipe; {leanFinger.Swipe}, direction: {direction}");
+            character.OnSwipe(direction);
+        }
+
+        private RoboCharacter GetCharacterAccordingGesture(LeanFinger leanFinger)
+        {
+            return _rightCharacter;
         }
     }
 }

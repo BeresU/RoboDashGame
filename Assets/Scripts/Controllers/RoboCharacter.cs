@@ -1,19 +1,25 @@
-﻿using UnityEngine;
+﻿using Movement;
+using RoboDash.Attack;
+using RoboDash.Damage;
+using UnityEngine;
 
 namespace RoboDash.Controllers
 {
     public class RoboCharacter : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private AttackHandler _attackHandler;
+        [SerializeField] private DamageHandler _damageHandler;
+        [SerializeField] private RoboMovement _movementHandler;
         
+        
+        public void OnTap(Vector2 leanFingerScreenPosition)
+        {
+            
         }
 
-        // Update is called once per frame
-        void Update()
+        public void OnSwipe(Vector2 direction)
         {
-        
+            _movementHandler.OnSwipe(direction);
         }
     }
 }

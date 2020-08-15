@@ -46,7 +46,12 @@ namespace Movement
             _castHandler.OnHit -= OnRayCastHit;
             _castHandler.OnHitLost -= OnHitLost;
         }
-
+        
+        public void OnSwipe(Vector2 direction)
+        {
+            
+        }
+        
         protected override void OnUpdate()
         {
             _castHandler.Cast();
