@@ -35,7 +35,7 @@ namespace SimpleMovement.Modules
         
         public abstract void Stop();
         
-        public abstract void Jump();
+        public abstract void Jump(T direction);
 
         public abstract void Rotate(T position);
 

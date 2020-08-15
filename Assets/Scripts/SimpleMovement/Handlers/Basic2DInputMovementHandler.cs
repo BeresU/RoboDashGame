@@ -13,7 +13,6 @@ namespace SimpleMovement.Handlers
 
         private bool _onGround = false;
         private bool _isMoving;
-        private bool _initRotate = false;
         private bool _movementLocked;
 
         private Vector2 _lastDirection = Vector2.zero;
@@ -66,32 +65,13 @@ namespace SimpleMovement.Handlers
             {
                 ActivateOnMoveEvent(_lastDirection, _movementModule.Speed);
                 _movementModule.Deaccelerate();
-                OnDeaccelerate();
             }
             
 #if UNITY_EDITOR
             HandleMovementVieKeyboard();
 #endif
         }
-    
-        private void OnDeaccelerate()
-        {
-            if (_movementModule.Speed < MinSpeedForInit)
-            {
-                ResetRotate();
-            }
-        }
-
-        private void ResetRotate()
-        {
-            if (!_initRotate)
-            {
-                Rotate(Vector2.zero);
-            }
-
-            _initRotate = true;
-        }
-
+        
         private void OnRayCastHit(RaycastHit2D hit)
         {
             _onGround = true;
@@ -127,7 +107,7 @@ namespace SimpleMovement.Handlers
             if (LockJump) return;
             if (!_onGround) return;
             OnJump?.Invoke();
-            _movementModule.Jump();
+            _movementModule.Jump(Vector3.up);
         }
 
         private void OnMoveInput(Vector2 direction)
@@ -135,19 +115,9 @@ namespace SimpleMovement.Handlers
             if (_movementLocked) return;
 
             _isMoving = true;
-            Rotate(direction);
             Move(direction);
         }
-
-        private void Rotate(Vector2 direction)
-        {
-            _initRotate = false;
-            ActivateOnRotateEvent(direction);
-
-            if (!_rotate) return;
-            _movementModule.Rotate(direction);
-        }
-
+        
         private void Move(Vector2 direction)
         {
             _lastDirection = direction;

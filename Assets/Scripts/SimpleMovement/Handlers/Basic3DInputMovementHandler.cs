@@ -136,7 +136,7 @@ namespace SimpleMovement.Handlers
             if (LockJump) return;
             if (!_onGround) return;
             OnJump?.Invoke();
-            _movementModule.Jump();
+            _movementModule.Jump(Vector3.up);
         }
 
         private void OnMoveInput(Vector3 direction)

@@ -47,8 +47,8 @@ namespace SimpleMovement.Modules
             _speed = 0;
         }
 
-        public override void Jump() =>
-            _rigidBody.AddForce(Vector3.up * 
+        public override void Jump(Vector3 direction) =>
+            _rigidBody.AddForce(direction * 
                                 Mathf.Sqrt(_jumpForce * -2f * Physics.gravity.y), ForceMode.VelocityChange);
 
         public override void Rotate(Vector3 position)
