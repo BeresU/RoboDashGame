@@ -15,7 +15,12 @@ namespace Movement
         [SerializeField] private bool _rotate;
         [SerializeField] private MovementModuleBase2D _movementModule;
 
-        [SerializeField] private float _minAngleForJump = 30f;
+        [Header("Jump settings")]
+        [SerializeField] private float _minFingerAngleForJump = 60f;
+
+        [SerializeField] private float _minXValDirectionOnJump = 0;
+        [SerializeField] private float _maxXValDirectionOnJump = 0.5f;
+        
         [SerializeField] private float _dashTime = 1f;
 
         private bool _onGround = false;
@@ -23,12 +28,13 @@ namespace Movement
         private bool _movementLocked;
         private bool _isDashing;
 
+        private const float MinAngleForDirectionOnJump = 45f;
+
         private Vector2 _moveDirection = Vector2.zero;
 
         public event Action OnJump;
         public event Action<bool> OnGroundStateChange;
-
-        private const float MinSpeedForInit = 0.001f;
+        
         public bool LockJump { get; set; }
 
         public bool LockMovement
@@ -54,32 +60,39 @@ namespace Movement
         }
 
         // TODO: bugs:
-        // bug 1: angle calculation is wrong, sometimes input direction will get as jump.
         // TODO: need tweek jump forces.
         // TODO: need to clamp y jump direction. 
         public void OnSwipe(Vector2 direction)
         {
             var dash = ShouldDash(direction);
-            Debug.Log($"Dash: {dash}");
 
             if (dash)
             {
-                _ = Dash(direction.NormalizeAndSignAxis(Vector2Extensions.Axis.X));
+                _ = Dash(direction.ToAxis(Vector2Extensions.Axis.X).Sign());
             }
             else
             {
-                Jump(direction);
+                direction.x = GetAxisValueAccordAngle(direction, Vector2.up, MinAngleForDirectionOnJump,
+                    _minXValDirectionOnJump, _maxXValDirectionOnJump);
+                
+                Jump(direction.SignAxis(Vector2Extensions.Axis.Y));
             }
         }
+        
+        private float GetAxisValueAccordAngle(Vector2 val, Vector2 direction, float angle, float minVal,
+            float maxVal)
+        {
+            var a = Vector2.Angle(val, direction);
+            return  (a > angle ? maxVal : minVal) * Math.Sign(val.x);
+        }
 
-        // TODO: return 180 on negative values.
         private bool ShouldDash(Vector2 direction)
         {
             if (_isDashing) return false;
             if (direction.y <= 0) return true;
-            var angle = Vector2.Angle(direction, Vector2.right);
-            Debug.Log($"Angle: {angle}");
-            return angle <= _minAngleForJump;
+            var angle = Vector2.Angle(direction, Vector2.up);
+            //Debug.Log($"Angle: {angle}");
+            return angle >= _minFingerAngleForJump;
         }
 
         protected override void OnUpdate()

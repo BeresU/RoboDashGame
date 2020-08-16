@@ -276,7 +276,7 @@ MonoBehaviour:
       m_Bits: 4294967295
   _rotate: 0
   _movementModule: {fileID: 7949660802743226346}
-  _minAngleForJump: 40
+  _minAngleForJump: 60
   _dashTime: 0.25
 --- !u!114 &8343436196355653484
 MonoBehaviour:

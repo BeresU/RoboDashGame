@@ -8,11 +8,10 @@ namespace Extensions
         public enum Axis
         {
             X,
-            Y,
-            XY
+            Y
         }
 
-        public static Vector2 NormalizeAndSignAxis(this Vector2 value, Axis axis)
+        public static Vector2 ToAxis(this Vector2 value, Axis axis)
         {
             switch (axis)
             {
@@ -24,9 +23,28 @@ namespace Extensions
                     break;
             }
 
+            return value;
+        }
+
+        public static Vector2 SignAxis(this Vector2 value, Axis axis)
+        {
+            switch (axis)
+            {
+                case Axis.X:
+                    value.x = Math.Sign(value.x);
+                    break;
+                case Axis.Y:
+                    value.y = Math.Sign(value.y);
+                    break;
+            }
+
+            return value;
+        }
+
+        public static Vector2 Sign(this Vector2 value)
+        {
             value.x = Math.Sign(value.x);
             value.y = Math.Sign(value.y);
-
             return value;
         }
     }
