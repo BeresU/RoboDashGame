@@ -12,7 +12,6 @@ namespace Movement
     public class RoboMovement : MovementHandlerBase<Vector2>
     {
         [SerializeField] protected PhysicsCastHandler2D _castHandler;
-        [SerializeField] private bool _rotate;
         [SerializeField] private MovementModuleBase2D _movementModule;
 
         [Header("Jump settings")]
@@ -59,9 +58,7 @@ namespace Movement
             _castHandler.OnHitLost -= OnHitLost;
         }
 
-        // TODO: bugs:
         // TODO: need tweek jump forces.
-        // TODO: need to clamp y jump direction. 
         public void OnSwipe(Vector2 direction)
         {
             var dash = ShouldDash(direction);
@@ -91,7 +88,6 @@ namespace Movement
             if (_isDashing) return false;
             if (direction.y <= 0) return true;
             var angle = Vector2.Angle(direction, Vector2.up);
-            //Debug.Log($"Angle: {angle}");
             return angle >= _minFingerAngleForJump;
         }
 

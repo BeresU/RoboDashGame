@@ -33,7 +33,6 @@ namespace RoboDash.Managers
         {
             var character = GetCharacterAccordingGesture(leanFinger);
             var direction = (leanFinger.ScreenPosition - leanFinger.StartScreenPosition).normalized;
-            Debug.Log($"On Swipe; {leanFinger.Swipe}, direction: {direction}");
             character.OnSwipe(direction);
         }
 
