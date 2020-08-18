@@ -16,7 +16,7 @@ namespace RoboDash.Controllers
 
         private void Awake()
         {
-            _roboAnimationHandler.Init(_movementHandler);
+            _roboAnimationHandler.Init(_movementHandler, _attackHandler);
         }
 
         private void OnDestroy()

@@ -24,7 +24,6 @@ namespace RoboDash.Managers
 
         private void OnTap(LeanFinger leanFinger)
         {
-            Debug.Log($"On Tap; {leanFinger.Tap}");
             var character = GetCharacterAccordingGesture(leanFinger);
             character.OnTap(leanFinger.ScreenPosition);
         }
