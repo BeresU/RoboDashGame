@@ -8,7 +8,7 @@ namespace RoboDash.Movement.Interfaces
         bool InAir { get; }
         bool IsDashing { get; }
         
-        event Action OnDash;
+        event Action<bool> OnDashStateChanged;
         event Action OnLand;
         event Action OnJump;
     }

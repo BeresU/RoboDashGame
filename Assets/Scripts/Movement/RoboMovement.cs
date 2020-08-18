@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Extensions;
+using RoboDash.Movement.Interfaces;
 using SimpleMovement.Handlers;
 using SimpleMovement.Handlers.PhysicCastHandler;
 using SimpleMovement.Modules;
@@ -8,8 +9,7 @@ using UnityEngine;
 
 namespace Movement
 {
-    // TODO: handle dash
-    public class RoboMovement : MovementHandlerBase<Vector2>
+    public class RoboMovement : MovementHandlerBase<Vector2>, IMovementData
     {
         [SerializeField] protected PhysicsCastHandler2D _castHandler;
         [SerializeField] private MovementModuleBase2D _movementModule;
@@ -25,16 +25,19 @@ namespace Movement
         private bool _onGround = false;
         private bool _isMoving; // TODO: someone need to set _isMoveing to true/false.
         private bool _movementLocked;
-        private bool _isDashing;
 
         private const float MinAngleForDirectionOnJump = 45f;
 
         private Vector2 _moveDirection = Vector2.zero;
-
-        public event Action OnJump;
-        public event Action<bool> OnGroundStateChange;
-        
         public bool LockJump { get; set; }
+
+        // IMovementData implement
+        public bool IsDashing { get; private set; }
+        public float Speed => _movementModule.Speed;
+        public bool InAir => !_onGround;
+        public event Action<bool> OnDashStateChanged;
+        public event Action OnLand;
+        public event Action OnJump;
 
         public bool LockMovement
         {
@@ -53,7 +56,7 @@ namespace Movement
         {
             base.Dispose();
             OnJump = null;
-            OnGroundStateChange = null;
+            OnDashStateChanged = null;
             _castHandler.OnHit -= OnRayCastHit;
             _castHandler.OnHitLost -= OnHitLost;
         }
@@ -85,16 +88,13 @@ namespace Movement
 
         private bool ShouldDash(Vector2 direction)
         {
-            if (_isDashing) return false;
+            if (IsDashing) return false;
             if (direction.y <= 0) return true;
             var angle = Vector2.Angle(direction, Vector2.up);
             return angle >= _minFingerAngleForJump;
         }
 
-        protected override void OnUpdate()
-        {
-            _castHandler.Cast();
-        }
+        protected override void OnUpdate() => _castHandler.Cast();
 
         // TODO: read again about fixed update
         protected override void OnFixedUpdate()
@@ -128,23 +128,21 @@ namespace Movement
         // TODO: consider activate by async void, need to check best practices. 
         private async Task Dash(Vector2 direction)
         {
-            _isDashing = _isMoving = true;
+            OnDashStateChanged?.Invoke(true);
+            IsDashing = _isMoving = true;
             _moveDirection = direction;
             await TimeSpan.FromSeconds(_dashTime);
             _moveDirection = Vector2.zero;
-            _isDashing = _isMoving = false;
+            OnDashStateChanged?.Invoke(false);
+            IsDashing = _isMoving = false;
         }
 
         private void OnRayCastHit(RaycastHit2D hit)
         {
             _onGround = true;
-            OnGroundStateChange?.Invoke(_onGround);
+            OnLand?.Invoke();
         }
 
-        private void OnHitLost()
-        {
-            _onGround = false;
-            OnGroundStateChange?.Invoke(_onGround);
-        }
+        private void OnHitLost() => _onGround = false;
     }
 }

@@ -233,6 +233,8 @@ MonoBehaviour:
   _attackHandler: {fileID: 8343436196355653484}
   _damageHandler: {fileID: 2720427409565794029}
   _movementHandler: {fileID: 420384809733508175}
+  _roboAnimationHandler:
+    _roboAnimator: {fileID: 1752962593}
 --- !u!114 &420384809733508175
 MonoBehaviour:
   m_ObjectHideFlags: 0
