@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace RoboDash.Managers
 {
-    public class InputManager : MonoBehaviour
+    public class PlayersManager : MonoBehaviour
     {
-        // TODO: not set this vie inspector, get character from scene .
         [SerializeField] private RoboCharacter _rightCharacter;
         [SerializeField] private RoboCharacter _leftCharacter;
+
+        private Camera _sceneCamera;
         
         private void Awake()
         {
