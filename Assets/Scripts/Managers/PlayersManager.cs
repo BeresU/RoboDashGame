@@ -1,4 +1,5 @@
-﻿using Lean.Touch;
+﻿using Helpers;
+using Lean.Touch;
 using RoboDash.Controllers;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace RoboDash.Managers
         
         private void Awake()
         {
+            _sceneCamera = Camera.main;
             LeanTouch.OnFingerSwipe += OnSwipe;
             LeanTouch.OnFingerTap += OnTap;
         }
@@ -36,9 +38,7 @@ namespace RoboDash.Managers
             character.OnSwipe(direction);
         }
 
-        private RoboCharacter GetCharacterAccordingGesture(LeanFinger leanFinger)
-        {
-            return _rightCharacter;
-        }
+        private RoboCharacter GetCharacterAccordingGesture(LeanFinger leanFinger) =>
+            CameraHelper.PosRightToCamera(_sceneCamera, leanFinger.StartScreenPosition) ? _rightCharacter : _leftCharacter;
     }
 }
