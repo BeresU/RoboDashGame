@@ -26,4 +26,11 @@ public static class CameraExtentions
         var rightEdge = RightEdge(camera, distance);
         return rightEdge - rightEdge * 2 + camera.transform.position.x;
     }
+
+    public static float ScreenHeight(this Camera camera) => camera.orthographicSize * 2;
+    public static float ScreenWidth(this Camera camera) => camera.ScreenHeight() * camera.aspect;
+    
+    public static float RightScreenEdge(this Camera camera) => camera.transform.position.x + camera.ScreenWidth() / 2;
+
+    public static void SetScreenWidth(this Camera camera, float value) => camera.orthographicSize = value / camera.aspect / 2;
 }
