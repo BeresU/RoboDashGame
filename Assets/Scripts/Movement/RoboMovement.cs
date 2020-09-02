@@ -14,12 +14,12 @@ namespace Movement
         [SerializeField] protected PhysicsCastHandler2D _castHandler;
         [SerializeField] private MovementModuleBase2D _movementModule;
 
-        [Header("Jump settings")]
-        [SerializeField] private float _minFingerAngleForJump = 60f;
+        [Header("Jump settings")] [SerializeField]
+        private float _minFingerAngleForJump = 60f;
 
         [SerializeField] private float _minXValDirectionOnJump = 0;
         [SerializeField] private float _maxXValDirectionOnJump = 0.5f;
-        
+
         [SerializeField] private float _dashTime = 1f;
 
         private bool _onGround = false;
@@ -31,7 +31,6 @@ namespace Movement
         private Vector2 _moveDirection = Vector2.zero;
         public bool LockJump { get; set; }
 
-        // IMovementData implement
         public bool IsDashing { get; private set; }
         public float Speed => _movementModule.Speed;
         public bool InAir => !_onGround;
@@ -72,18 +71,36 @@ namespace Movement
             }
             else
             {
-                direction.x = GetAxisValueAccordAngle(direction, Vector2.up, MinAngleForDirectionOnJump,
-                    _minXValDirectionOnJump, _maxXValDirectionOnJump);
-                
-                Jump(direction.SignAxis(Vector2Extensions.Axis.Y));
+                HandleJump(direction);
             }
         }
         
+        // TODO: consider activate by async void, need to check best practices. 
+        private async Task Dash(Vector2 direction)
+        {
+            OnDashStateChanged?.Invoke(true);
+            IsDashing = _isMoving = true;
+            _moveDirection = direction;
+            await TimeSpan.FromSeconds(_dashTime);
+            _moveDirection = Vector2.zero;
+            OnDashStateChanged?.Invoke(false);
+            IsDashing = _isMoving = false;
+        }
+        
+        private void HandleJump(Vector2 direction)
+        {
+            direction.x = GetAxisValueAccordAngle(direction, Vector2.up, MinAngleForDirectionOnJump,
+                _minXValDirectionOnJump, _maxXValDirectionOnJump);
+
+            if (direction.y <= 0) return;
+            Jump(direction.SignAxis(Vector2Extensions.Axis.Y));
+        }
+
         private float GetAxisValueAccordAngle(Vector2 val, Vector2 direction, float angle, float minVal,
             float maxVal)
         {
             var a = Vector2.Angle(val, direction);
-            return  (a > angle ? maxVal : minVal) * Math.Sign(val.x);
+            return (a > angle ? maxVal : minVal) * Math.Sign(val.x);
         }
 
         private bool ShouldDash(Vector2 direction)
@@ -123,18 +140,6 @@ namespace Movement
             _movementModule.Move(direction);
             ActivateOnMoveEvent(direction, _movementModule.CurrentSpeed);
             _movementModule.Accelerate();
-        }
-
-        // TODO: consider activate by async void, need to check best practices. 
-        private async Task Dash(Vector2 direction)
-        {
-            OnDashStateChanged?.Invoke(true);
-            IsDashing = _isMoving = true;
-            _moveDirection = direction;
-            await TimeSpan.FromSeconds(_dashTime);
-            _moveDirection = Vector2.zero;
-            OnDashStateChanged?.Invoke(false);
-            IsDashing = _isMoving = false;
         }
 
         private void OnRayCastHit(RaycastHit2D hit)
