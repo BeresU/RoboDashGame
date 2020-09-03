@@ -4,6 +4,7 @@ using UnityEngine;
 namespace CinemachineExtentions
 {
     // TODO: support x axis as well
+    [ExecuteInEditMode]
     public class CinemachineApplyOffset : CinemachineExtension
     {
         [SerializeField] private Vector3 _offset;
@@ -15,7 +16,7 @@ namespace CinemachineExtentions
             CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
         {
             if (stage != _applyAfter) return;
-
+            
             var offset = GetSizeAccordState(state) - _offset.y;
 
             state.PositionCorrection += new Vector3(state.PositionCorrection.x, offset, state.PositionCorrection.z);

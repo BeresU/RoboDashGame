@@ -1,19 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace RoboDash.Damage
 {
-    public class DamageHandler : MonoBehaviour
+    public class DamageHandler : MonoBehaviour, IDamageData
     {
-        // Start is called before the first frame update
-        void Start()
+        public event Action OnDamage;
+        public void ApplyDamage()
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            throw new NotImplementedException();
         }
     }
 }

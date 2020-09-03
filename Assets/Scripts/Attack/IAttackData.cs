@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RoboDash.Movement.Interfaces
+namespace RoboDash.Attack.Interfaces
 {
     public interface IAttackData
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using Extensions;
-using RoboDash.Movement.Interfaces;
+using RoboDash.Attack.Interfaces;
 using UnityEngine;
 
 namespace RoboDash.Attack

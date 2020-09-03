@@ -1,4 +1,6 @@
 ﻿using System;
+using RoboDash.Attack.Interfaces;
+using RoboDash.Damage;
 using RoboDash.Movement.Interfaces;
 using UnityEngine;
 
@@ -13,6 +15,7 @@ namespace RoboDash.Animation
         private readonly int LandTriggerHash = Animator.StringToHash("Land");
         private readonly int JumpTriggerHash = Animator.StringToHash("Jump");
         private readonly int PunchTriggerHash = Animator.StringToHash("Punch");
+        private readonly int HitTriggerHash = Animator.StringToHash("Hit");
 
         // Bools
         private readonly int InAirBoolHash = Animator.StringToHash("InAir");
@@ -22,7 +25,9 @@ namespace RoboDash.Animation
         private IMovementData MovementData { get; set; }
         private IAttackData AttackData { get; set; }
         
-        public void Init(IMovementData movementData, IAttackData attackData)
+        private IDamageData DamageData { get; set; }
+        
+        public void Init(IMovementData movementData, IAttackData attackData, IDamageData damageData)
         {
             MovementData = movementData;
             AttackData = attackData;
@@ -31,6 +36,8 @@ namespace RoboDash.Animation
             MovementData.OnDashStateChanged += DashStateChanged;
             MovementData.OnJump += OnJump;
             MovementData.OnLand += OnLand;
+            DamageData = damageData;
+            DamageData.OnDamage += OnPlayerHit;
         }
 
 
@@ -41,9 +48,12 @@ namespace RoboDash.Animation
             MovementData.OnLand -= OnLand;
             AttackData.OnPunch -= OnPunch;
             AttackData.PunchStateChange -= OnPunchStateChange;
+            DamageData.OnDamage -= OnPlayerHit;
         }
         
         private void OnPunchStateChange(bool isPunching) => _roboAnimator.SetBool(IsPunchingBoolHash, isPunching);
+
+        private void OnPlayerHit() => _roboAnimator.SetTrigger(HitTriggerHash);
 
         private void OnLand()
         {
