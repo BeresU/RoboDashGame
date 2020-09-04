@@ -44,7 +44,7 @@ namespace SimpleMovement.Handlers.PhysicCastHandler
         public void Reset() => _wasHit = false;
         public void CastAll() => OnHits?.Invoke(_physicsCastAll());
 
-        public void Cast()
+        public T Cast()
         {
             if (_physicsCast())
             {
@@ -54,6 +54,8 @@ namespace SimpleMovement.Handlers.PhysicCastHandler
             {
                 HitLost();
             }
+
+            return _hit;
         }
 
         private void HitLost()

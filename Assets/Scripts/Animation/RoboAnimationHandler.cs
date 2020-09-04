@@ -25,9 +25,9 @@ namespace RoboDash.Animation
         private IMovementData MovementData { get; set; }
         private IAttackData AttackData { get; set; }
         
-        private IDamageData DamageData { get; set; }
+        private IDamageHanalder DamageHanalder { get; set; }
         
-        public void Init(IMovementData movementData, IAttackData attackData, IDamageData damageData)
+        public void Init(IMovementData movementData, IAttackData attackData, IDamageHanalder damageHanalder)
         {
             MovementData = movementData;
             AttackData = attackData;
@@ -36,8 +36,8 @@ namespace RoboDash.Animation
             MovementData.OnDashStateChanged += DashStateChanged;
             MovementData.OnJump += OnJump;
             MovementData.OnLand += OnLand;
-            DamageData = damageData;
-            DamageData.OnDamage += OnPlayerHit;
+            DamageHanalder = damageHanalder;
+            DamageHanalder.OnDamage += OnPlayerHit;
         }
 
 
@@ -48,7 +48,7 @@ namespace RoboDash.Animation
             MovementData.OnLand -= OnLand;
             AttackData.OnPunch -= OnPunch;
             AttackData.PunchStateChange -= OnPunchStateChange;
-            DamageData.OnDamage -= OnPlayerHit;
+            DamageHanalder.OnDamage -= OnPlayerHit;
         }
         
         private void OnPunchStateChange(bool isPunching) => _roboAnimator.SetBool(IsPunchingBoolHash, isPunching);

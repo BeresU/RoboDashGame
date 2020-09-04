@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1293652945}
   m_Layer: 0
-  m_Name: RayDirection
+  m_Name: Movement_RayDirection
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
@@ -40,9 +40,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2051427118}
   m_Layer: 0
-  m_Name: RayOrigin
+  m_Name: Movement_RayOrigin
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 3153355700651002959}
   - component: {fileID: 1752962593}
   - component: {fileID: 6498430437242007675}
+  - component: {fileID: 6995667259927615308}
   m_Layer: 0
   m_Name: RobotGraphic
   m_TagString: Untagged
@@ -92,6 +93,8 @@ Transform:
   m_Children:
   - {fileID: 2051427118}
   - {fileID: 1293652945}
+  - {fileID: 1410252432359061578}
+  - {fileID: 2243538606061595647}
   m_Father: {fileID: 3282248199360425101}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,6 +184,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.31, y: 0.42}
   m_Size: {x: 0.62, y: 0.8174682}
   m_Direction: 0
+--- !u!114 &6995667259927615308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076023833059978636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd8dee9678603e458efbc1e53be1552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _configs:
+  - _attackType: 1
+    _force: 0.1
+  _rigidbody: {fileID: 5270823709487788994}
 --- !u!1 &2153960630744804915
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +213,6 @@ GameObject:
   - component: {fileID: 420384809733508175}
   - component: {fileID: 7949660802743226346}
   - component: {fileID: 8343436196355653484}
-  - component: {fileID: 2720427409565794029}
   - component: {fileID: 5270823709487788994}
   m_Layer: 0
   m_Name: Robot
@@ -231,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackHandler: {fileID: 8343436196355653484}
-  _damageHandler: {fileID: 2720427409565794029}
+  _damageHandler: {fileID: 6995667259927615308}
   _movementHandler: {fileID: 420384809733508175}
   _roboAnimationHandler:
     _roboAnimator: {fileID: 1752962593}
@@ -295,18 +313,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _punchTime: 0.3
---- !u!114 &2720427409565794029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2153960630744804915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd8dee9678603e458efbc1e53be1552, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _castHandler:
+    _castType: 0
+    _castParameters:
+      _originRef: {fileID: 1410252432359061578}
+      _directionRef: {fileID: 2243538606061595647}
+      _length: 0.2
+      _radius: 0
+      _customOrigin: 0
+      _customDirection: 0
+    _mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
 --- !u!50 &5270823709487788994
 Rigidbody2D:
   serializedVersion: 4
@@ -358,4 +376,64 @@ Transform:
   - {fileID: 9121790410631151027}
   m_Father: {fileID: 6070388977403309096}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4839914553053167114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2243538606061595647}
+  m_Layer: 0
+  m_Name: Attack_RayDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2243538606061595647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839914553053167114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.654, y: 0.251, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9121790410631151027}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8275217083825636535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1410252432359061578}
+  m_Layer: 0
+  m_Name: Attack_RayOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1410252432359061578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275217083825636535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.644, y: 0.251, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9121790410631151027}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
