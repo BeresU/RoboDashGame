@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="20332503-c66d-4075-a919-2201dc9d622a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Battle_Camera_02.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Battle_Camera_02.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Helpers/AveragePosSetter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Helpers/AveragePosSetter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Movement/MovementSpeedLimiter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RoboDash/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RoboDash/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RoboDash/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RoboDash/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RoboDash/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RoboDash/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Robot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Robot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attack/AttackHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attack/AttackHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Movement/RoboMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement/RoboMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBodyBase2DMovementModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBodyBase2DMovementModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/QuickSearch.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/QuickSearch.settings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,26 +49,114 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/MovementHandlerBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/Basic3DInputMovementHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tests/PhysicsTester.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CAB14A-C59E-4552-B77F-98A4AED18F9E/bb/08c2c23b/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Attack/AttackHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.1/Runtime/Behaviours/CinemachineTargetGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/SpriteSheetManipulator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CAB14A-C59E-4552-B77F-98A4AED18F9E/50/8a474f8c/RaycastHit2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Helpers/CameraHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CAB14A-C59E-4552-B77F-98A4AED18F9E/79/deb72e2f/ForceMode2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/PlayersManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement/Interfaces/IMovementData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Attack/IAttackData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D1422B3F-C937-4601-8C92-EDA852993B93/3b/d12b6eed/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement/MovementSpeedLimiter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Animation/RoboAnimationHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extensions/TransformExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extensions/CameraExtentions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extensions/TouchUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extensions/Vector2Extentions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Lean/Touch/Extras/LeanFingerSwipe.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.1/Runtime/Core/CinemachineExtension.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extensions/TimeSpanExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Lean/Touch/Extras/LeanSwipeBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/RoboCharacter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.1/Runtime/Behaviours/CinemachineCameraOffset.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Helpers/AveragePosSetter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Utils/CastParameters.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModuleBase2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBodyMovementModuleBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Lean/Touch/Scripts/LeanFinger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModuleBase3D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement/RoboMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModuleBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBodyBase2DMovementModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Lean/Touch/Examples/Scripts/LeanTouchEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Extensions/Vector3Extentions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/Basic2DInputMovementHandler.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Tests/PhysicsTester.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModule2D.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBody2DMovementModule.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModule3D.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBodyMovementModule.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModule2DBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModule3DBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModuleBase3D.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModuleBase2D.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/PhysicsCastHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/InputMovementHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/SpriteSheetManipulator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/MovementHandlerBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Attack/AttackHanlder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Lean/Touch/Extras/LeanSwipeBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/TransformExtensions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/TimeSpanExtentions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/TimeSpanExtensions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBodyMovementModuleBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/MovementModuleBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/Basic2DInputMovementHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/Basic3DInputMovementHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/FloatExtentions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/Vector2Extentions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Animation/AnimationHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement/Interfaces/IMovementData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement/Interfaces/IAttackData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/AnimationBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/CameraUtils.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/TouchUtils.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Helpers/CameraHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/PlayersManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/CameraExtentions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Camera/FollowCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CinemachineExtentions/CinemachineApplyOffset.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Attack/IAttackData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Animation/RoboAnimationHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/RoboCharacter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Attack/AttackType.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Damage/IDamageData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Handlers/PhysicCastHandler/PhysicsCastHandlerBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/Vector3Extentions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Attack/AttackPayload.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Damage/DamageHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Attack/AttackHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Helpers/CenterTransform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Helpers/AveragePosSetter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement/MovementSpeedLimiter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SimpleMovement/Moduls/RigidBodyBase2DMovementModule.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement/RoboMovement.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1eYWXCFx8y0U7pbA1j7KpVnhB9M" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -48,6 +167,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -59,15 +179,19 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19008">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="19008" />
       <option name="selectedOptions">
         <set />
       </option>
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -79,15 +203,144 @@
       <workItem from="1594499053938" duration="22000" />
       <workItem from="1594499085428" duration="11000" />
       <workItem from="1594708418823" duration="2836000" />
+      <workItem from="1595485289850" duration="2894000" />
+      <workItem from="1595590668278" duration="2882000" />
+      <workItem from="1595829580584" duration="6597000" />
+      <workItem from="1595917503591" duration="757000" />
+      <workItem from="1596004359794" duration="1475000" />
+      <workItem from="1596809178381" duration="7166000" />
+      <workItem from="1597499334888" duration="4771000" />
+      <workItem from="1597518505690" duration="4972000" />
+      <workItem from="1597608964919" duration="4199000" />
+      <workItem from="1597694977825" duration="2447000" />
+      <workItem from="1597780916392" duration="3517000" />
+      <workItem from="1598018526155" duration="4386000" />
+      <workItem from="1598099543988" duration="7000" />
+      <workItem from="1598099891882" duration="2700000" />
+      <workItem from="1598217632926" duration="27000" />
+      <workItem from="1598298054831" duration="12351000" />
+      <workItem from="1598814143304" duration="22615000" />
+      <workItem from="1599115035012" duration="1129000" />
+      <workItem from="1599224909411" duration="7918000" />
+      <workItem from="1600531543002" duration="7403000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="708" y="345" key="#Notifications" timestamp="1599224941078">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="708" y="345" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1599224941078" />
+    <state width="1877" height="374" key="GridCell.Tab.0.bottom" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.0.center" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.0.left" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.0.right" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.1.bottom" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.1.center" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.1.left" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.1.right" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.2.center" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.2.left" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.2.right" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.3.bottom" timestamp="1600588289872">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289872" />
+    <state width="1877" height="374" key="GridCell.Tab.3.center" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.3.left" timestamp="1600588289871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289871" />
+    <state width="1877" height="374" key="GridCell.Tab.3.right" timestamp="1600588289872">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600588289872" />
+    <state x="794" y="236" key="RiderGenerateDialog" timestamp="1599226536869">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1126" y="236" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1597781694917" />
+    <state x="794" y="236" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1599226536869" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1598298194478">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598298194478" />
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1597522747768">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597522747768" />
+    <state x="-1151" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596005421026">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1151" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1596005421026" />
+    <state x="624" y="244" key="run.anything.popup" timestamp="1598820802728">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="624" y="244" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598820802728" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600535377385">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598030376866" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1600535377385" />
   </component>
 </project>

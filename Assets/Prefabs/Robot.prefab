@@ -282,6 +282,7 @@ MonoBehaviour:
   _minXValDirectionOnJump: 0
   _maxXValDirectionOnJump: 0.5
   _dashTime: 0.25
+  _rigidbody: {fileID: 5270823709487788994}
 --- !u!114 &7949660802743226346
 MonoBehaviour:
   m_ObjectHideFlags: 0

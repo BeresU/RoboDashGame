@@ -2,19 +2,166 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\SuperTank_V2\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\SuperTank_V2\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\ReSharperHost\v202\SolutionCaches\_RoboDash.1813864173.00" t="ExcludeRecursive" />
+    <e p="C:\Users\SuperTank_V2\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_RoboDash.1813864173.00" t="ExcludeRecursive" />
     <e p="D:\Projects\Unity\RoboDash" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Lean" t="Include">
+          <e p="Common" t="Include">
+            <e p="Documentation" t="Include">
+              <e p="LeanGuide.cs" t="Include" />
+            </e>
+            <e p="Examples" t="Include">
+              <e p="Fonts" t="Include">
+                <e p="OFL.txt" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="LeanLinkTo.cs" t="Include" />
+                <e p="LeanUpgradeEventSystem.cs" t="Include" />
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="Alpha.shader" t="Include" />
+                <e p="Object.shader" t="Include" />
+                <e p="Skybox.shader" t="Include" />
+              </e>
+            </e>
+            <e p="LeanCommon.asmdef" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="LeanHelper.cs" t="Include" />
+              <e p="LeanInput.cs" t="Include" />
+              <e p="LeanInspector.cs" t="Include" />
+            </e>
+          </e>
+          <e p="READ ME.txt" t="Include" />
+          <e p="Touch" t="Include">
+            <e p="Examples" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="LeanDestroy.cs" t="Include" />
+                <e p="LeanDragTrail.cs" t="Include" />
+                <e p="LeanInfoText.cs" t="Include" />
+                <e p="LeanPulseScale.cs" t="Include" />
+                <e p="LeanSpawn.cs" t="Include" />
+                <e p="LeanTouchEvents.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Extras" t="Include">
+              <e p="LeanDragCamera.cs" t="Include" />
+              <e p="LeanDragTranslate.cs" t="Include" />
+              <e p="LeanFingerData.cs" t="Include" />
+              <e p="LeanFingerDown.cs" t="Include" />
+              <e p="LeanFingerFilter.cs" t="Include" />
+              <e p="LeanFingerOld.cs" t="Include" />
+              <e p="LeanFingerSwipe.cs" t="Include" />
+              <e p="LeanFingerTap.cs" t="Include" />
+              <e p="LeanFingerUp.cs" t="Include" />
+              <e p="LeanFingerUpdate.cs" t="Include" />
+              <e p="LeanPath.cs" t="Include" />
+              <e p="LeanPinchScale.cs" t="Include" />
+              <e p="LeanPlane.cs" t="Include" />
+              <e p="LeanRoll.cs" t="Include" />
+              <e p="LeanScreenDepth.cs" t="Include" />
+              <e p="LeanSelect.cs" t="Include" />
+              <e p="LeanSelectable.cs" t="Include" />
+              <e p="LeanSelectableBehaviour.cs" t="Include" />
+              <e p="LeanSelectableGraphicColor.cs" t="Include" />
+              <e p="LeanSelectableRendererColor.cs" t="Include" />
+              <e p="LeanSelectableSpriteRendererColor.cs" t="Include" />
+              <e p="LeanSwipeBase.cs" t="Include" />
+              <e p="LeanTwistRotate.cs" t="Include" />
+              <e p="LeanTwistRotateAxis.cs" t="Include" />
+            </e>
+            <e p="LeanTouch.asmdef" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="LeanFinger.cs" t="Include" />
+              <e p="LeanGesture.cs" t="Include" />
+              <e p="LeanSnapshot.cs" t="Include" />
+              <e p="LeanTouch.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
+          <e p="Animation" t="Include">
+            <e p="RoboAnimationHandler.cs" t="Include" />
+          </e>
+          <e p="Attack" t="Include">
+            <e p="AttackHandler.cs" t="Include" />
+            <e p="AttackPayload.cs" t="Include" />
+            <e p="AttackType.cs" t="Include" />
+            <e p="IAttackData.cs" t="Include" />
+          </e>
+          <e p="Camera" t="Include">
+            <e p="FollowCamera.cs" t="Include" />
+          </e>
+          <e p="CinemachineExtentions" t="Include">
+            <e p="CinemachineApplyOffset.cs" t="Include" />
+          </e>
+          <e p="Controllers" t="Include">
+            <e p="RoboCharacter.cs" t="Include" />
+          </e>
+          <e p="Damage" t="Include">
+            <e p="DamageConfig.cs" t="Include" />
+            <e p="DamageHandler.cs" t="Include" />
+            <e p="IDamageHanalder.cs" t="Include" />
+          </e>
+          <e p="Editor" t="Include">
+            <e p="SpriteSheetManipulator.cs" t="Include" />
+          </e>
+          <e p="Extensions" t="Include">
+            <e p="CameraExtentions.cs" t="Include" />
+            <e p="TimeSpanExtensions.cs" t="Include" />
+            <e p="TouchUtils.cs" t="Include" />
+            <e p="TransformExtensions.cs" t="Include" />
+            <e p="Vector2Extentions.cs" t="Include" />
+            <e p="Vector3Extentions.cs" t="Include" />
+          </e>
+          <e p="Helpers" t="Include">
+            <e p="AveragePosSetter.cs" t="Include" />
+            <e p="CameraHelper.cs" t="Include" />
+          </e>
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
+            <e p="PlayersManager.cs" t="Include" />
+          </e>
+          <e p="Movement" t="Include">
+            <e p="Interfaces" t="Include">
+              <e p="IMovementData.cs" t="Include" />
+            </e>
+            <e p="MovementSpeedLimiter.cs" t="Include" />
+            <e p="RoboMovement.cs" t="Include" />
+          </e>
+          <e p="SimpleMovement" t="Include">
+            <e p="Enums" t="Include">
+              <e p="CastType.cs" t="Include" />
+            </e>
+            <e p="Handlers" t="Include">
+              <e p="Basic2DInputMovementHandler.cs" t="Include" />
+              <e p="Basic3DInputMovementHandler.cs" t="Include" />
+              <e p="MovementHandlerBase.cs" t="Include" />
+              <e p="PhysicCastHandler" t="Include">
+                <e p="PhysicsCastHandler.cs" t="Include" />
+                <e p="PhysicsCastHandler2D.cs" t="Include" />
+                <e p="PhysicsCastHandlerBase.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Moduls" t="Include">
+              <e p="MovementModuleBase.cs" t="Include" />
+              <e p="MovementModuleBase2D.cs" t="Include" />
+              <e p="MovementModuleBase3D.cs" t="Include" />
+              <e p="RigidBodyBase2DMovementModule.cs" t="Include" />
+              <e p="RigidBodyMovementModuleBase.cs" t="Include" />
+            </e>
+            <e p="Utils" t="Include">
+              <e p="CastParameters.cs" t="Include" />
+            </e>
           </e>
           <e p="Tests" t="Include">
             <e p="PhysicsTester.cs" t="Include" />
           </e>
         </e>
       </e>
+      <e p="LeanCommon.csproj" t="IncludeRecursive" />
+      <e p="LeanTouch.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="RoboDash.sln" t="IncludeFlat" />

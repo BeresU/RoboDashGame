@@ -22,6 +22,8 @@ namespace Movement
 
         [SerializeField] private float _dashTime = 1f;
 
+        [SerializeField] private Rigidbody2D _rigidbody;
+
         private bool _onGround = false;
         private bool _isMoving; // TODO: someone need to set _isMoveing to true/false.
         private bool _movementLocked;
@@ -112,8 +114,7 @@ namespace Movement
         }
 
         protected override void OnUpdate() => _castHandler.Cast();
-
-        // TODO: read again about fixed update
+        
         protected override void OnFixedUpdate()
         {
             if (_isMoving)

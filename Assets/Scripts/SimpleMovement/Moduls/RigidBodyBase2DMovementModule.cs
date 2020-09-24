@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RoboDash.Movement;
+using UnityEngine;
 
 namespace SimpleMovement.Modules
 {
@@ -24,8 +25,7 @@ namespace SimpleMovement.Modules
             get => _maxSpeed;
             set => _maxSpeed = value;
         }
-
-        [ContextMenu("Init")]
+        
         public override void Init()
         {
             _timeZeroToMax = Mathf.Max(_timeZeroToMax, float.Epsilon);
@@ -39,8 +39,9 @@ namespace SimpleMovement.Modules
 
         public override void Move(Vector2 direction)
         {
-            var dir = new Vector2(direction.x * _speed,_rigidBody.velocity.y );
-            _rigidBody.velocity = dir;
+            var velocity = new Vector2(direction.x * _speed,_rigidBody.velocity.y );
+         //   MovementSpeedLimiter.PredictNextPos(_rigidBody, velocity);
+            _rigidBody.velocity = velocity;
         }
 
         public override void MoveTo(Vector2 position)
@@ -57,8 +58,7 @@ namespace SimpleMovement.Modules
         }
 
         public override void Jump(Vector2 direction) =>
-            _rigidBody.AddForce(direction *
-                                Mathf.Sqrt(_jumpForce * -2f * Physics2D.gravity.y), ForceMode2D.Impulse);
+            _rigidBody.AddForce(direction * Mathf.Sqrt(_jumpForce * -2f * Physics2D.gravity.y), ForceMode2D.Impulse);
 
         public override void Rotate(Vector2 position)
         {
