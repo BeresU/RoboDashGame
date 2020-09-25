@@ -65,7 +65,6 @@ namespace Movement
         // TODO: need tweek jump forces.
         public void OnSwipe(Vector2 direction)
         {
-            Debug.Log($"Direction: {direction}");
             var dash = ShouldDash(direction);
 
             if (dash)

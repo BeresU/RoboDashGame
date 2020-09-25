@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 7949660802743226346}
   - component: {fileID: 8343436196355653484}
   - component: {fileID: 5270823709487788994}
+  - component: {fileID: 9074174644247829843}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -251,6 +252,7 @@ MonoBehaviour:
   _attackHandler: {fileID: 8343436196355653484}
   _damageHandler: {fileID: 6995667259927615308}
   _movementHandler: {fileID: 420384809733508175}
+  _defenseHandler: {fileID: 9074174644247829843}
   _roboAnimationHandler:
     _roboAnimator: {fileID: 1752962593}
 --- !u!114 &420384809733508175
@@ -347,6 +349,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &9074174644247829843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153960630744804915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dd341e4af8a4744b331a7c65f8c198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defenseTime: 0.5
+  _minYForDirectionForDefense: -0.5
 --- !u!1 &3282248199360425098
 GameObject:
   m_ObjectHideFlags: 0
