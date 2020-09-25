@@ -40,7 +40,6 @@ namespace SimpleMovement.Modules
         public override void Move(Vector2 direction)
         {
             var velocity = new Vector2(direction.x * _speed,_rigidBody.velocity.y );
-         //   MovementSpeedLimiter.PredictNextPos(_rigidBody, velocity);
             _rigidBody.velocity = velocity;
         }
 
@@ -67,13 +66,13 @@ namespace SimpleMovement.Modules
 
         public override void Accelerate()
         {
-            _speed += _accelRatePerSecond * Time.deltaTime;
+            _speed += _accelRatePerSecond * Time.fixedDeltaTime;
             _speed = Mathf.Min(_speed, _maxSpeed);
         }
 
         public override void Deaccelerate()
         {
-            _speed += _deacelRatePerSecond * Time.deltaTime;
+            _speed += _deacelRatePerSecond * Time.fixedDeltaTime;
             _speed = Mathf.Max(_speed, 0);
         }
 

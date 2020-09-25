@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Extensions;
+using RoboDash.Movement;
 using RoboDash.Movement.Interfaces;
 using SimpleMovement.Handlers;
 using SimpleMovement.Handlers.PhysicCastHandler;
@@ -22,8 +23,8 @@ namespace Movement
 
         [SerializeField] private float _dashTime = 1f;
 
-        [SerializeField] private Rigidbody2D _rigidbody;
-
+        [SerializeField] private MovementLimiter _movementLimiter;
+        
         private bool _onGround = false;
         private bool _isMoving; // TODO: someone need to set _isMoveing to true/false.
         private bool _movementLocked;
@@ -117,11 +118,11 @@ namespace Movement
         
         protected override void OnFixedUpdate()
         {
-            if (_isMoving)
+            if (_isMoving && _movementLimiter.CanMove(_moveDirection))
             {
                 Move(_moveDirection);
             }
-            else
+            else 
             {
                 ActivateOnMoveEvent(_moveDirection, _movementModule.Speed);
                 _movementModule.Deaccelerate();

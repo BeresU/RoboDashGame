@@ -33,6 +33,7 @@ public static class CameraExtentions
     public static float ScreenWidth(this Camera camera) => camera.ScreenHeight() * camera.aspect;
 
     public static float RightScreenEdge(this Camera camera) => camera.transform.position.x + camera.ScreenWidth() / 2;
+    public static float LeftScreenEdge(this Camera camera) => camera.transform.position.x - camera.ScreenWidth() / 2;
 
     public static float BottomScreenEdge(this Camera camera) => camera.transform.position.y - camera.orthographicSize;
 
