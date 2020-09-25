@@ -957,7 +957,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173487156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.425, y: 0, z: 0}
+  m_LocalPosition: {x: -1.298, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
@@ -5542,7 +5542,7 @@ MonoBehaviour:
   m_Follow: {fileID: 398317454}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 0.66
+    OrthographicSize: 0.6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -5563,7 +5563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926779772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000000059604645, y: 0.057039976, z: -1}
+  m_LocalPosition: {x: -0.000000074505806, y: 0.006399989, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1361741362}
@@ -5705,7 +5705,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.66
+  orthographic size: 0.6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5729,7 +5729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000000059604645, y: 0.057039976, z: -1}
+  m_LocalPosition: {x: -0.000000074505806, y: 0.006399989, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1031064977}
@@ -6370,7 +6370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031064976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.425, y: 0, z: 0}
+  m_LocalPosition: {x: 1.298, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
@@ -8266,11 +8266,11 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.922
   m_CameraDistance: 1
-  m_DeadZoneWidth: 0.205
+  m_DeadZoneWidth: 0.15
   m_DeadZoneHeight: 2
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.205
+  m_SoftZoneWidth: 0.15
   m_SoftZoneHeight: 2
   m_BiasX: 0
   m_BiasY: 0
