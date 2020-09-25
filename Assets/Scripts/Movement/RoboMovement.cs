@@ -118,7 +118,7 @@ namespace Movement
         
         protected override void OnFixedUpdate()
         {
-            if (_isMoving && _movementLimiter.CanMove(_moveDirection))
+            if (_isMoving)
             {
                 Move(_moveDirection);
             }
