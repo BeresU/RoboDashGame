@@ -22,8 +22,7 @@ namespace Movement
         [SerializeField] private float _maxXValDirectionOnJump = 0.5f;
 
         [SerializeField] private float _dashTime = 1f;
-
-        [SerializeField] private MovementLimiter _movementLimiter;
+        [SerializeField] private float _minYForDirectionForDash = 0.4f;
         
         private bool _onGround = false;
         private bool _isMoving; // TODO: someone need to set _isMoveing to true/false.
@@ -66,6 +65,7 @@ namespace Movement
         // TODO: need tweek jump forces.
         public void OnSwipe(Vector2 direction)
         {
+            Debug.Log($"Direction: {direction}");
             var dash = ShouldDash(direction);
 
             if (dash)
@@ -109,6 +109,7 @@ namespace Movement
         private bool ShouldDash(Vector2 direction)
         {
             if (IsDashing) return false;
+            if (direction.y < _minYForDirectionForDash) return false;
             if (direction.y <= 0) return true;
             var angle = Vector2.Angle(direction, Vector2.up);
             return angle >= _minFingerAngleForJump;
