@@ -23,20 +23,26 @@ namespace RoboDash.Controllers
 
         private void OnDestroy()
         {
-            _movementHandler.Dispose();   
+            _movementHandler.Dispose();
         }
-        
+
         public void OnTap(Vector2 leanFingerScreenPosition)
         {
-            if(_defenseHandler.IsDefending) return;
+            if (_defenseHandler.IsDefending) return;
             _attackHandler.OnTap();
         }
 
         public void OnSwipe(Vector2 direction)
         {
-            if(_defenseHandler.IsDefending) return;
-            _defenseHandler.OnSwipe(direction);
-            _movementHandler.OnSwipe(direction);
+            if (!_movementHandler.IsDashing && !_movementHandler.InAir && !_attackHandler.IsAttacking)
+            {
+                _defenseHandler.OnSwipe(direction);
+            }
+            
+            if (!_defenseHandler.IsDefending)
+            {
+                _movementHandler.OnSwipe(direction);
+            }
         }
     }
 }

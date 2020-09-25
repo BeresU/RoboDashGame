@@ -25,6 +25,7 @@ namespace RoboDash.Defense
 
         private void OnDefense()
         {
+            if(IsDefending) return;
             DefenseStarted?.Invoke();
             ActivateDefenseTimer();
         }

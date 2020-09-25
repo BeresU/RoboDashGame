@@ -13,6 +13,7 @@ namespace RoboDash.Attack
         [SerializeField] private PhysicsCastHandler2D _castHandler;
 
         private bool _isPunching;
+        public bool IsAttacking => _isPunching;
         public event Action OnPunch;
         public event Action<bool> PunchStateChange;
 
