@@ -328,6 +328,11 @@ MonoBehaviour:
     _mask:
       serializedVersion: 2
       m_Bits: 4294967295
+  _configs:
+  - _attackType: 1
+    _force: 10
+  - _attackType: 2
+    _force: 20
 --- !u!50 &5270823709487788994
 Rigidbody2D:
   serializedVersion: 4

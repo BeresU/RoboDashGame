@@ -3,6 +3,7 @@
     public enum AttackType
     {
         None,
-        Punch
+        Punch,
+        Reflect
     }
 }
