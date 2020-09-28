@@ -10,12 +10,11 @@ namespace RoboDash.Attack
 {
     public class AttackHandler : MonoBehaviour, IAttackData
     {
-        [SerializeField] private float _punchTime = 1f;
         [SerializeField] private PhysicsCastHandler2D _castHandler;
-        [SerializeField] private DamageConfig[] _configs;
+        [SerializeField] private AttackConfig[] _configs;
         
-        private readonly Dictionary<AttackType, DamageConfig> _damageConfigLookUp =
-            new Dictionary<AttackType, DamageConfig>();
+        private readonly Dictionary<AttackType, AttackConfig> _damageConfigLookUp =
+            new Dictionary<AttackType, AttackConfig>();
 
         private bool _isPunching;
         public bool IsAttacking => _isPunching;
@@ -45,12 +44,12 @@ namespace RoboDash.Attack
         public void OnTap()
         {
             if (_isPunching) return;
-            ActivateCoolDown();
             Attack(AttackType.Punch);
         }
 
         private void Attack(AttackType type)
         {
+            ActivateCoolDown(type);
             var hit = _castHandler.Cast();
 
             if (hit)
@@ -72,11 +71,12 @@ namespace RoboDash.Attack
             damageHandler?.ApplyDamage(payload);
         }
 
-        private async void ActivateCoolDown()
+        private async void ActivateCoolDown(AttackType type)
         {
             PunchStateChange?.Invoke(true);
             _isPunching = true;
-            await TimeSpan.FromSeconds(_punchTime);
+            var coolDown = _damageConfigLookUp[type].CoolDown;
+            await TimeSpan.FromSeconds(coolDown);
             _isPunching = false;
             PunchStateChange?.Invoke(false);
         }

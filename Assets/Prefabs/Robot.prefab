@@ -331,8 +331,10 @@ MonoBehaviour:
   _configs:
   - _attackType: 1
     _force: 10
+    _coolDown: 0.3
   - _attackType: 2
     _force: 20
+    _coolDown: 0
 --- !u!50 &5270823709487788994
 Rigidbody2D:
   serializedVersion: 4
