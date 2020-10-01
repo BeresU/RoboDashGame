@@ -37,6 +37,7 @@ namespace RoboDash.Defense
 
         private bool OnDamage()
         {
+            Debug.Log($"On Damage Reflecting: {_shouldReflect}");
             if (IsDefending)
             {
                 if (_shouldReflect)
@@ -68,12 +69,16 @@ namespace RoboDash.Defense
         {
             _shouldReflect = true;
             
+            Debug.Log($"Reflecting");
+            
             for (var i = 0; i < _framesForReflect; i++)
             {
                 await Task.Yield();
             }
 
             _shouldReflect = false;
+            
+            Debug.Log($"Finished Reflecting");
         }
 
         private async void ActivateDefenseTimer()
