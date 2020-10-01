@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e26758939928a4b9b33b7301eb0e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _punchTime: 0.3
   _castHandler:
     _castType: 0
     _castParameters:
@@ -370,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defenseTime: 0.5
   _minYForDirectionForDefense: -0.5
+  _framesForReflect: 3
 --- !u!1 &3282248199360425098
 GameObject:
   m_ObjectHideFlags: 0

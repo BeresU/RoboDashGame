@@ -13,6 +13,7 @@ namespace RoboDash.Damage
         private readonly Dictionary<AttackType, DamageConfig> _damageConfigLookUp =
             new Dictionary<AttackType, DamageConfig>();
         public event Action OnDamage;
+        public event Func<bool> DamagePredicate; 
 
         private void Awake() => InitDictionary();
 
@@ -26,6 +27,8 @@ namespace RoboDash.Damage
 
         public void ApplyDamage(AttackPayload payload)
         {
+            if(DamagePredicate != null && !DamagePredicate.Invoke()) return;
+            
             var config = _damageConfigLookUp[payload.AttackType];
             
             _rigidbody.AddForce(payload.Direction * (payload.Force * config.Force), ForceMode2D.Impulse);

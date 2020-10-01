@@ -1,5 +1,4 @@
-﻿using System;
-using Movement;
+﻿using Movement;
 using RoboDash.Animation;
 using RoboDash.Attack;
 using RoboDash.Damage;
@@ -15,9 +14,10 @@ namespace RoboDash.Controllers
         [SerializeField] private RoboMovement _movementHandler;
         [SerializeField] private DefenseHandler _defenseHandler;
         [SerializeField] private RoboAnimationHandler _roboAnimationHandler;
-
+        
         private void Awake()
         {
+            _defenseHandler.Init(_attackHandler, _damageHandler);
             _roboAnimationHandler.Init(_movementHandler, _attackHandler, _damageHandler, _defenseHandler);
         }
 

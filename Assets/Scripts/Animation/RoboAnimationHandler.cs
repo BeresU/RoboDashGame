@@ -1,4 +1,5 @@
 ﻿using System;
+using RoboDash.Attack;
 using RoboDash.Attack.Interfaces;
 using RoboDash.Damage;
 using RoboDash.Defense;
@@ -56,7 +57,8 @@ namespace RoboDash.Animation
             DefenseData.DefenseStarted -= OnDefense;
         }
         
-        private void OnPunchStateChange(bool isPunching) => _roboAnimator.SetBool(_isPunchingBoolHash, isPunching);
+        private void OnPunchStateChange(AttackType attackType) => _roboAnimator.SetBool(_isPunchingBoolHash, IsAttacking(attackType));
+        private static bool IsAttacking(AttackType type) => type != AttackType.None && type != AttackType.Reflect;
 
         private void OnPlayerHit() => _roboAnimator.SetTrigger(_hitTriggerHash);
 

@@ -19,7 +19,7 @@ namespace RoboDash.Attack
         private bool _isPunching;
         public bool IsAttacking => _isPunching;
         public event Action OnPunch;
-        public event Action<bool> PunchStateChange;
+        public event Action<AttackType> PunchStateChange;
 
         private void Awake()
         {
@@ -47,7 +47,7 @@ namespace RoboDash.Attack
             Attack(AttackType.Punch);
         }
 
-        private void Attack(AttackType type)
+        public void Attack(AttackType type)
         {
             ActivateCoolDown(type);
             var hit = _castHandler.Cast();
@@ -73,12 +73,12 @@ namespace RoboDash.Attack
 
         private async void ActivateCoolDown(AttackType type)
         {
-            PunchStateChange?.Invoke(true);
+            PunchStateChange?.Invoke(type);
             _isPunching = true;
             var coolDown = _damageConfigLookUp[type].CoolDown;
             await TimeSpan.FromSeconds(coolDown);
             _isPunching = false;
-            PunchStateChange?.Invoke(false);
+            PunchStateChange?.Invoke(AttackType.None);
         }
     }
 }

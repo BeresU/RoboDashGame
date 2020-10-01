@@ -5,6 +5,7 @@ namespace RoboDash.Attack.Interfaces
     public interface IAttackData
     {
         event Action OnPunch;
-        event Action<bool> PunchStateChange;
+        event Action<AttackType> PunchStateChange;
+        void Attack(AttackType type);
     }
 }
