@@ -9,48 +9,26 @@ using UnityEngine;
 
 namespace RoboDash.Defense
 {
-    public class DefenseHandler : MonoBehaviour, IDefenseData
+    public class DefenseHandler : MonoBehaviour, IDefenseHandler
     {
         [SerializeField] private float _defenseTime;
         [SerializeField] private float _minYForDirectionForDefense = -0.5f;
         [SerializeField] private int _framesForReflect = 3;
-
+        
         private bool _shouldReflect;
         
         private readonly CancellationTokenSource _ct = new CancellationTokenSource();
 
-        private IAttackData _attackData;
+        private IAttackHandler _attackHandler;
         private IDamageHanalder _damageHanalder;
         public event Action DefenseStarted;
         
         public bool IsDefending { get; private set; }
+        public bool IsReflecting => _shouldReflect;
         public float DefenseTime => _defenseTime;
 
         private void OnDestroy() => _ct.Cancel();
-
-        public void Init(IAttackData attackData, IDamageHanalder damageHanalder)
-        {
-            _attackData = attackData;
-            _damageHanalder = damageHanalder;
-            _damageHanalder.DamagePredicate += OnDamage;
-        }
-
-        private bool OnDamage()
-        {
-            Debug.Log($"On Damage Reflecting: {_shouldReflect}");
-            if (IsDefending)
-            {
-                if (_shouldReflect)
-                {
-                    _attackData.Attack(AttackType.Reflect);    
-                }
-                
-                return false;
-            }
-
-            return true;
-        }
-
+        
         public void OnSwipe(Vector2 direction)
         {
             if(direction.y > _minYForDirectionForDefense) return;
@@ -60,7 +38,7 @@ namespace RoboDash.Defense
         private void OnDefense()
         {
             if(IsDefending) return;
-            ActivateReflectCounter();
+          //  ActivateReflectCounter();
             DefenseStarted?.Invoke();
             ActivateDefenseTimer();
         }

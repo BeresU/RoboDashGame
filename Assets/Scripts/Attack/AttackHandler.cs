@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using Extensions;
 using RoboDash.Attack.Interfaces;
-using RoboDash.Damage;
+using RoboDash.Controllers.Battle;
 using SimpleMovement.Handlers.PhysicCastHandler;
 using UnityEngine;
 
 namespace RoboDash.Attack
 {
-    public class AttackHandler : MonoBehaviour, IAttackData
+    public class AttackHandler : MonoBehaviour, IAttackHandler
     {
         [SerializeField] private PhysicsCastHandler2D _castHandler;
         [SerializeField] private AttackConfig[] _configs;
@@ -18,7 +18,7 @@ namespace RoboDash.Attack
 
         private bool _isPunching;
         public bool IsAttacking => _isPunching;
-        public event Action OnPunch;
+        public event Action<AttackType> OnAttack;
         public event Action<AttackType> PunchStateChange;
 
         private void Awake()
@@ -29,7 +29,7 @@ namespace RoboDash.Attack
         
         private void OnDestroy()
         {
-            OnPunch = null;
+            OnAttack = null;
             PunchStateChange = null;
         }
         
@@ -57,18 +57,25 @@ namespace RoboDash.Attack
                 DoAttack(hit.collider, type);
             }
 
-            OnPunch?.Invoke();
+            OnAttack?.Invoke(type);
         }
 
         private void DoAttack(Component hitCollider, AttackType type)
         {
-            var damageHandler = hitCollider.GetComponent<IDamageHanalder>();
+            var battleHandler = hitCollider.GetComponent<IBattleHandler>();
+            if(battleHandler ==  null) return;
+            
             var direction = (hitCollider.transform.position -transform.position).ToAxis(Vector3Extentions.Axis.X)
                 .Sign();
 
-            var force = _damageConfigLookUp[type].Force; 
-            var payload = new AttackPayload(AttackType.Punch, direction, force);
-            damageHandler?.ApplyDamage(payload);
+
+            var attackType = battleHandler.IsDefending ? AttackType.Defence : type;
+            
+            var force = _damageConfigLookUp[attackType].Force;
+            Debug.Log($"Attack type: {attackType}, force: {force} ");
+            
+            var payload = new AttackPayload(attackType, direction, force);
+            battleHandler.ApplyDamage(payload);
         }
 
         private async void ActivateCoolDown(AttackType type)

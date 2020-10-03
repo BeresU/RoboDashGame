@@ -5,9 +5,7 @@ namespace RoboDash.Damage
 {
     public interface IDamageHanalder
     {
-       event Action OnDamage;
-       event Func<bool> DamagePredicate;
-
+       event Action<AttackType> OnDamage;
        void ApplyDamage(AttackPayload payload);
     }
 }

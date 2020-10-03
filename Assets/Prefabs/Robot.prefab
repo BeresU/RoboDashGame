@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 3153355700651002959}
   - component: {fileID: 1752962593}
   - component: {fileID: 6498430437242007675}
-  - component: {fileID: 6995667259927615308}
+  - component: {fileID: 5477301605183322420}
   m_Layer: 0
   m_Name: RobotGraphic
   m_TagString: Untagged
@@ -184,7 +184,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.31, y: 0.42}
   m_Size: {x: 0.62, y: 0.8174682}
   m_Direction: 0
---- !u!114 &6995667259927615308
+--- !u!114 &5477301605183322420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,13 +193,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076023833059978636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd8dee9678603e458efbc1e53be1552, type: 3}
+  m_Script: {fileID: 11500000, guid: 6eb85062d2fa68b449651a3985f3bf5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _configs:
-  - _attackType: 1
-    _force: 0.1
-  _rigidbody: {fileID: 5270823709487788994}
 --- !u!1 &2153960630744804915
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +211,7 @@ GameObject:
   - component: {fileID: 8343436196355653484}
   - component: {fileID: 5270823709487788994}
   - component: {fileID: 9074174644247829843}
+  - component: {fileID: 6049244793382523384}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -250,9 +247,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackHandler: {fileID: 8343436196355653484}
-  _damageHandler: {fileID: 6995667259927615308}
+  _damageHandler: {fileID: 6049244793382523384}
   _movementHandler: {fileID: 420384809733508175}
   _defenseHandler: {fileID: 9074174644247829843}
+  _battleHandler: {fileID: 5477301605183322420}
   _roboAnimationHandler:
     _roboAnimator: {fileID: 1752962593}
 --- !u!114 &420384809733508175
@@ -331,8 +329,14 @@ MonoBehaviour:
   - _attackType: 1
     _force: 10
     _coolDown: 0.3
-  - _attackType: 2
+  - _attackType: 4
     _force: 20
+    _coolDown: 0
+  - _attackType: 2
+    _force: 0.1
+    _coolDown: 0.3
+  - _attackType: 3
+    _force: 0.5
     _coolDown: 0
 --- !u!50 &5270823709487788994
 Rigidbody2D:
@@ -370,6 +374,25 @@ MonoBehaviour:
   _defenseTime: 0.5
   _minYForDirectionForDefense: -0.5
   _framesForReflect: 3
+--- !u!114 &6049244793382523384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153960630744804915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd8dee9678603e458efbc1e53be1552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _configs:
+  - _attackType: 1
+    _force: 0.1
+  _defaultDamageConfig:
+    _attackType: 0
+    _force: 1
+  _rigidbody: {fileID: 5270823709487788994}
 --- !u!1 &3282248199360425098
 GameObject:
   m_ObjectHideFlags: 0

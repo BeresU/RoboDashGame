@@ -4,6 +4,8 @@
     {
         None,
         Punch,
-        Reflect
+        Defence,
+        ReflectLow,
+        ReflectHigh
     }
 }

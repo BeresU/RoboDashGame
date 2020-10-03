@@ -4,6 +4,7 @@ using RoboDash.Attack;
 using RoboDash.Damage;
 using RoboDash.Defense;
 using UnityEngine;
+using RoboDash.Controllers.Battle;
 
 namespace RoboDash.Controllers
 {
@@ -13,11 +14,12 @@ namespace RoboDash.Controllers
         [SerializeField] private DamageHandler _damageHandler;
         [SerializeField] private RoboMovement _movementHandler;
         [SerializeField] private DefenseHandler _defenseHandler;
+        [SerializeField] private BattleHandler _battleHandler;
         [SerializeField] private RoboAnimationHandler _roboAnimationHandler;
         
         private void Awake()
         {
-            _defenseHandler.Init(_attackHandler, _damageHandler);
+            _battleHandler.Init(_damageHandler, _defenseHandler, _attackHandler);
             _roboAnimationHandler.Init(_movementHandler, _attackHandler, _damageHandler, _defenseHandler);
         }
 

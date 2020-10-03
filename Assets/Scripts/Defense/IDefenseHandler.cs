@@ -2,9 +2,10 @@
 
 namespace RoboDash.Defense
 {
-    public interface IDefenseData 
+    public interface IDefenseHandler 
     { 
         bool IsDefending { get; }
+        bool IsReflecting { get; }
         float DefenseTime { get; }
         
         event Action DefenseStarted;

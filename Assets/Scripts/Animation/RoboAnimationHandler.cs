@@ -1,5 +1,6 @@
 ﻿using System;
 using RoboDash.Attack;
+using RoboDash.Attack.Extensions;
 using RoboDash.Attack.Interfaces;
 using RoboDash.Damage;
 using RoboDash.Defense;
@@ -12,7 +13,7 @@ namespace RoboDash.Animation
     public class RoboAnimationHandler : IDisposable
     {
         [SerializeField] private Animator _roboAnimator;
-        
+
         // Triggers
         private readonly int _landTriggerHash = Animator.StringToHash("Land");
         private readonly int _jumpTriggerHash = Animator.StringToHash("Jump");
@@ -24,43 +25,50 @@ namespace RoboDash.Animation
         private readonly int _inAirBoolHash = Animator.StringToHash("InAir");
         private readonly int _isDashingBoolHash = Animator.StringToHash("IsDashing");
         private readonly int _isPunchingBoolHash = Animator.StringToHash("IsPunching");
-        
+
         private IMovementData MovementData { get; set; }
-        private IAttackData AttackData { get; set; }
+        private IAttackHandler AttackHandler { get; set; }
         private IDamageHanalder DamageHanalder { get; set; }
-        
-        private IDefenseData DefenseData { get; set; }
-        
-        public void Init(IMovementData movementData, IAttackData attackData, IDamageHanalder damageHanalder, IDefenseData defenseData)
+
+        private IDefenseHandler DefenseHandler { get; set; }
+
+        public void Init(IMovementData movementData, IAttackHandler attackHandler, IDamageHanalder damageHanalder,
+            IDefenseHandler defenseHandler)
         {
             MovementData = movementData;
-            AttackData = attackData;
-            AttackData.OnPunch += OnPunch;
-            AttackData.PunchStateChange += OnPunchStateChange;
+            AttackHandler = attackHandler;
+            AttackHandler.OnAttack += Attack;
+            AttackHandler.PunchStateChange += OnPunchStateChange;
             MovementData.OnDashStateChanged += DashStateChanged;
             MovementData.OnJump += OnJump;
             MovementData.OnLand += OnLand;
             DamageHanalder = damageHanalder;
             DamageHanalder.OnDamage += OnPlayerHit;
-            DefenseData = defenseData;
-            DefenseData.DefenseStarted += OnDefense;
+            DefenseHandler = defenseHandler;
+            DefenseHandler.DefenseStarted += OnDefense;
         }
-        
+
         public void Dispose()
         {
             MovementData.OnDashStateChanged -= DashStateChanged;
             MovementData.OnJump -= OnJump;
             MovementData.OnLand -= OnLand;
-            AttackData.OnPunch -= OnPunch;
-            AttackData.PunchStateChange -= OnPunchStateChange;
+            AttackHandler.OnAttack -= Attack;
+            AttackHandler.PunchStateChange -= OnPunchStateChange;
             DamageHanalder.OnDamage -= OnPlayerHit;
-            DefenseData.DefenseStarted -= OnDefense;
+            DefenseHandler.DefenseStarted -= OnDefense;
         }
-        
-        private void OnPunchStateChange(AttackType attackType) => _roboAnimator.SetBool(_isPunchingBoolHash, IsAttacking(attackType));
-        private static bool IsAttacking(AttackType type) => type != AttackType.None && type != AttackType.Reflect;
 
-        private void OnPlayerHit() => _roboAnimator.SetTrigger(_hitTriggerHash);
+        private void OnPunchStateChange(AttackType attackType) =>
+            _roboAnimator.SetBool(_isPunchingBoolHash, IsAttacking(attackType));
+
+        private static bool IsAttacking(AttackType type) => type != AttackType.None && type != AttackType.ReflectHigh;
+
+        private void OnPlayerHit(AttackType type)
+        {
+            if (type.IsDefending()) return;
+            _roboAnimator.SetTrigger(_hitTriggerHash);
+        }
 
         private void OnLand()
         {
@@ -73,13 +81,14 @@ namespace RoboDash.Animation
             _roboAnimator.SetBool(_inAirBoolHash, true);
             _roboAnimator.SetTrigger(_jumpTriggerHash);
         }
-        
+
         private void OnDefense() => _roboAnimator.SetTrigger(_defenseTriggerHash);
 
         private void DashStateChanged(bool isDashing) => _roboAnimator.SetBool(_isDashingBoolHash, isDashing);
 
-        private void OnPunch()
+        private void Attack(AttackType type)
         {
+            if (!type.IsPunching()) return;
             _roboAnimator.SetTrigger(_punchTriggerHash);
         }
     }
