@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Extensions;
-using RoboDash.Attack;
 using RoboDash.Attack.Interfaces;
 using RoboDash.Damage;
 using UnityEngine;
@@ -14,56 +15,66 @@ namespace RoboDash.Defense
         [SerializeField] private float _defenseTime;
         [SerializeField] private float _minYForDirectionForDefense = -0.5f;
         [SerializeField] private int _framesForReflect = 3;
-        
-        private bool _shouldReflect;
-        
+        [SerializeField] private Animator _roboAnimator;
+
         private readonly CancellationTokenSource _ct = new CancellationTokenSource();
 
         private IAttackHandler _attackHandler;
         private IDamageHanalder _damageHanalder;
         public event Action DefenseStarted;
-        
+
         public bool IsDefending { get; private set; }
-        public bool IsReflecting => _shouldReflect;
+        public bool IsReflecting { get; private set; }
+
         public float DefenseTime => _defenseTime;
 
         private void OnDestroy() => _ct.Cancel();
-        
+
         public void OnSwipe(Vector2 direction)
         {
-            if(direction.y > _minYForDirectionForDefense) return;
+            if (direction.y > _minYForDirectionForDefense) return;
             OnDefense();
         }
 
         private void OnDefense()
         {
-            if(IsDefending) return;
-          //  ActivateReflectCounter();
+            if (IsDefending) return;
             DefenseStarted?.Invoke();
+            StartCoroutine(ActivateReflectCounterRoutine());
             ActivateDefenseTimer();
         }
-
-        private async void ActivateReflectCounter()
+        
+        
+        private IEnumerator ActivateReflectCounterRoutine()
         {
-            _shouldReflect = true;
+            IsReflecting = true;
             
-            Debug.Log($"Reflecting");
-            
-            for (var i = 0; i < _framesForReflect; i++)
-            {
-                await Task.Yield();
-            }
+            yield return null;
 
-            _shouldReflect = false;
-            
-            Debug.Log($"Finished Reflecting");
+            var currentState = _roboAnimator.GetCurrentAnimatorStateInfo(0);
+            var animationClip = _roboAnimator.GetCurrentAnimatorClipInfo(0)[0];
+
+            while (currentState.normalizedTime < 0.9f)
+            {
+                var currentFrame =
+                    (int) (currentState.normalizedTime * (animationClip.clip.length * animationClip.clip.frameRate));
+                Debug.Log($"Current frame: {currentFrame} normalized time: {currentState.normalizedTime}");
+                yield return null;
+                
+                currentState = _roboAnimator.GetCurrentAnimatorStateInfo(0);
+
+                if (currentFrame >= _framesForReflect)
+                {
+                    IsReflecting = false;
+                }
+            }
         }
 
         private async void ActivateDefenseTimer()
         {
             IsDefending = true;
             await TimeSpan.FromSeconds(_defenseTime);
-            if(_ct.IsCancellationRequested) return;
+            if (_ct.IsCancellationRequested) return;
             IsDefending = false;
         }
     }

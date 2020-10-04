@@ -330,7 +330,7 @@ MonoBehaviour:
     _force: 10
     _coolDown: 0.3
   - _attackType: 4
-    _force: 20
+    _force: 1.5
     _coolDown: 0
   - _attackType: 2
     _force: 0.1
@@ -373,7 +373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defenseTime: 0.5
   _minYForDirectionForDefense: -0.5
-  _framesForReflect: 3
+  _framesForReflect: 1
+  _roboAnimator: {fileID: 1752962593}
 --- !u!114 &6049244793382523384
 MonoBehaviour:
   m_ObjectHideFlags: 0
