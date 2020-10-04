@@ -58,7 +58,7 @@ namespace RoboDash.Defense
             {
                 var currentFrame =
                     (int) (currentState.normalizedTime * (animationClip.clip.length * animationClip.clip.frameRate));
-                Debug.Log($"Current frame: {currentFrame} normalized time: {currentState.normalizedTime}");
+                
                 yield return null;
                 
                 currentState = _roboAnimator.GetCurrentAnimatorStateInfo(0);

@@ -67,12 +67,10 @@ namespace RoboDash.Attack
             
             var direction = (hitCollider.transform.position -transform.position).ToAxis(Vector3Extentions.Axis.X)
                 .Sign();
-
-
+            
             var attackType = battleHandler.IsDefending ? AttackType.Defence : type;
             
             var force = _damageConfigLookUp[attackType].Force;
-            Debug.Log($"Attack type: {attackType}, force: {force} ");
             
             var payload = new AttackPayload(attackType, direction, force);
             battleHandler.ApplyDamage(payload);
