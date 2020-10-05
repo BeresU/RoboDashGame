@@ -9,6 +9,7 @@ namespace RoboDash.Managers
     {
         [SerializeField] private RoboCharacter _rightCharacter;
         [SerializeField] private RoboCharacter _leftCharacter;
+        [SerializeField] private EndGameController _endGameActivator;
 
         private Camera _sceneCamera;
         
@@ -17,6 +18,15 @@ namespace RoboDash.Managers
             _sceneCamera = Camera.main;
             LeanTouch.OnFingerSwipe += OnSwipe;
             LeanTouch.OnFingerTap += OnTap;
+
+            _rightCharacter.OnDeath += OnDeath;
+            _leftCharacter.OnDeath += OnDeath;
+        }
+
+        private void OnDeath(RoboCharacter robot)
+        {
+            var winner = _leftCharacter == robot ? _rightCharacter : _leftCharacter;
+            _endGameActivator.OnGameOver(winner, robot);
         }
 
         private void OnDestroy()

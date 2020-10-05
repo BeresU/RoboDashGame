@@ -1,4 +1,5 @@
-﻿using RoboDash.Attack;
+﻿using System;
+using RoboDash.Attack;
 using RoboDash.Attack.Interfaces;
 using RoboDash.Damage;
 using RoboDash.Defense;
@@ -12,6 +13,7 @@ namespace RoboDash.Controllers.Battle
         private IDamageHanalder _damageHanalder;
         private IAttackHandler _attackHandler;
         
+        public event Action OnDeath;
         public bool IsDefending => _defenseHandler.IsDefending;
 
         public void Init(IDamageHanalder damageHanalder, IDefenseHandler defenseHandler, IAttackHandler attackHandler)
@@ -30,5 +32,7 @@ namespace RoboDash.Controllers.Battle
             var attackType = _defenseHandler.IsReflecting ? AttackType.ReflectHigh : AttackType.ReflectLow;
             _attackHandler.Attack(attackType);
         }
+
+        public void PlayerFail() => OnDeath?.Invoke();
     }
 }

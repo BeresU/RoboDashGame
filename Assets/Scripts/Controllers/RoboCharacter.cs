@@ -1,4 +1,5 @@
-﻿using Movement;
+﻿using System;
+using Movement;
 using RoboDash.Animation;
 using RoboDash.Attack;
 using RoboDash.Damage;
@@ -16,17 +17,25 @@ namespace RoboDash.Controllers
         [SerializeField] private DefenseHandler _defenseHandler;
         [SerializeField] private BattleHandler _battleHandler;
         [SerializeField] private RoboAnimationHandler _roboAnimationHandler;
+
+        public event Action<RoboCharacter> OnDeath;
         
+
         private void Awake()
         {
             _battleHandler.Init(_damageHandler, _defenseHandler, _attackHandler);
+            _battleHandler.OnDeath += ActivateOnDeath;
             _roboAnimationHandler.Init(_movementHandler, _attackHandler, _damageHandler, _defenseHandler);
         }
 
+
         private void OnDestroy()
         {
+            _battleHandler.OnDeath -= ActivateOnDeath;
             _movementHandler.Dispose();
         }
+
+        private void ActivateOnDeath() => OnDeath?.Invoke(this);
 
         public void OnTap(Vector2 leanFingerScreenPosition)
         {
